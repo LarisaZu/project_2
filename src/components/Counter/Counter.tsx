@@ -1,14 +1,14 @@
 import { useState } from "react";
-import "./Counter.scss";
+import cls from "./Counter.module.scss";
 
-const Counter = () => {
+export const Counter = () => {
   const [state, setState] = useState(0);
   return (
     <>
       <h1>{state}</h1>
-      <button onClick={() => setState((prev) => prev + 1)}>+</button>
+      <button className={cls.btn} onClick={() => setState((prev) => prev + 1)}>
+        +
+      </button>
     </>
   );
 };
-
-export default Counter;
