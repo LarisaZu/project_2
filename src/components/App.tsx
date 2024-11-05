@@ -3,12 +3,16 @@ import { Routes, Route, Link } from "react-router-dom";
 
 import AboutPage from "./pages/AboutPage/AboutPage.async";
 import MainPage from "./pages/MainPage/MainPage.async";
+import useTheme from "../theme/useTheme";
 
 const App = () => {
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <div className="app">
+    <div className={`app ${theme}`}>
       <Link to="/">Главная</Link>
       <Link to="/about">О сайте</Link>
+      <button onClick={toggleTheme}>toggleTheme</button>
       <Suspense fallback="Загружаю...">
         <Routes>
           <Route path="/about" element={<AboutPage />} />
