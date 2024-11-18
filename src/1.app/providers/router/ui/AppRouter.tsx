@@ -19,12 +19,14 @@ export const routeConfig: Record<AppRoute, RouteProps> = {
 
 export const AppRouter = () => {
   return (
-    <Suspense fallback="Загружаю...">
-      <Routes>
-        {Object.values(routeConfig).map((routeProps) => (
-          <Route key={routeProps.path} {...routeProps} />
-        ))}
-      </Routes>
-    </Suspense>
+    <div className="page-wrapper">
+      <Suspense fallback="Загружаю...">
+        <Routes>
+          {Object.values(routeConfig).map((routeProps) => (
+            <Route key={routeProps.path} {...routeProps} />
+          ))}
+        </Routes>
+      </Suspense>
+    </div>
   );
 };
