@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "1.app/App";
 import "1.app/styles/index.scss";
-import { ThemeProvider } from "1.app/providers/ThemeProvider/ui/ThemeProvider";
+import { ThemeProvider } from "1.app/providers/themeProvider/ui/ThemeProvider";
 
 const domNode = document.getElementById("root");
 

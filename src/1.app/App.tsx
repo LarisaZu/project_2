@@ -1,24 +1,19 @@
-import { Suspense } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { AboutPage } from "2.pages/AboutPage";
-import { MainPage } from "2.pages/MainPage";
+import { AppRouter } from "1.app/providers/router";
 import { classNames, useTheme } from "6.shared/lib";
+import { AppRoute, routePath } from "6.shared/config/routeConfig/routeConfig";
 
 const App = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
     <div className={classNames("app", [theme])}>
-      <Link to="/">Главная</Link>
-      <Link to="/about">О сайте</Link>
+      <Link to={routePath[AppRoute.MAIN]}>Главная</Link>
+      <Link to={routePath[AppRoute.ABOUT]}>О сайте</Link>
       <button onClick={toggleTheme}>toggleTheme</button>
-      <Suspense fallback="Загружаю...">
-        <Routes>
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/" element={<MainPage />} />
-        </Routes>
-      </Suspense>
+
+      <AppRouter />
     </div>
   );
 };
