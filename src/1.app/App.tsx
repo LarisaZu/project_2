@@ -10,8 +10,6 @@ const App = () => {
       <Navbar />
 
       <AppRouter />
-
-      <button onClick={toggleTheme}>toggleTheme</button>
     </div>
   );
 };
