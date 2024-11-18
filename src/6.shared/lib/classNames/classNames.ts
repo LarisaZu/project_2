@@ -2,12 +2,12 @@ type TMods = Record<string, string | boolean>;
 
 export const classNames = (
   cls: string,
-  addition: string[],
+  addition: string[] = [],
   mods?: TMods
 ): string => {
   return [
     cls,
-    ...addition,
+    ...addition.filter(Boolean),
     mods ? Object.keys(mods).filter((key) => mods[key]) : "",
   ]
     .join(" ")
