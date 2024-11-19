@@ -5,6 +5,8 @@ import App from "1.app/App";
 import "1.app/styles/index.scss";
 import { ThemeProvider } from "1.app/providers/themeProvider/ui/ThemeProvider";
 
+import "6.shared/config/i18/i18n";
+
 const domNode = document.getElementById("root");
 
 render(
