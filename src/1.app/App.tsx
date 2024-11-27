@@ -13,7 +13,6 @@ const App = () => {
         <Navbar />
         <div className="content-wrapper">
           <Sidebar />
-
           <AppRouter />
         </div>
       </Suspense>

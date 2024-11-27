@@ -44,6 +44,7 @@ export function buildLoaders(options: IBuildOptions): webpack.RuleSetRule[] {
       {
         loader: "css-loader",
         options: {
+          sourceMap: false,
           modules: {
             auto: (resourcePath: string) => resourcePath.includes(".module."),
             localIdentName: isDev
@@ -52,7 +53,12 @@ export function buildLoaders(options: IBuildOptions): webpack.RuleSetRule[] {
           },
         },
       },
-      "sass-loader",
+      {
+        loader: "sass-loader",
+        options: {
+          sourceMap: false,
+        },
+      },
     ],
   };
 
