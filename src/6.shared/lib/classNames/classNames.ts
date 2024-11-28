@@ -8,7 +8,7 @@ export const classNames = (
   return [
     cls,
     ...addition.filter(Boolean),
-    mods ? Object.keys(mods).filter((key) => mods[key]) : "",
+    ...(mods ? Object.keys(mods).filter((key) => mods[key]) : []),
   ]
     .join(" ")
     .trim();
