@@ -2,18 +2,21 @@ import { render } from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "1.app/App";
-import "1.app/styles/index.scss";
-import { ThemeProvider } from "1.app/providers/themeProvider/ui/ThemeProvider";
+import { ThemeProvider } from "1.app/providers/ThemeProvider";
+import { ErrorBoundary } from "1.app/providers/ErrorBoundary";
 
+import "1.app/styles/index.scss";
 import "6.shared/config/i18/i18n";
 
 const domNode = document.getElementById("root");
 
 render(
   <BrowserRouter>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </ErrorBoundary>
   </BrowserRouter>,
   domNode
 );

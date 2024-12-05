@@ -6,12 +6,6 @@ import { classNames, useTheme } from "6.shared/lib";
 
 const App = () => {
   const { theme } = useTheme();
-  console.log(
-    classNames("someClassName", ["class1", "class2"], {
-      hovered: true,
-      focused: true,
-    })
-  );
 
   return (
     <div className={classNames("app", [theme])}>
