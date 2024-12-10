@@ -3,23 +3,21 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type { Config } from "jest";
-
-const config: Config = {
+const config = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
   // Stop running tests after `n` failures
   // bail: 0,
 
-  // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "/private/var/folders/x2/sdgxvfks78xcxwbv24_b6v6h0000gn/T/jest_dx",
-
-  // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
-  // An array of regexp pattern strings used to skip coverage collection
-  coveragePathIgnorePatterns: ["/node_modules/"],
-  // An array of file extensions your modules use
+  testEnvironment: "jsdom",
+
+  // A list of paths to directories that Jest should use to search for files in
+  // roots: ["<rootDir>"],
+  // modulePaths: ["<rootDir>src"],
+  // roots: ["src"],
+
   moduleFileExtensions: [
     "js",
     "mjs",
@@ -30,22 +28,29 @@ const config: Config = {
     "json",
     "node",
   ],
-  // The root directory that Jest should scan for tests and modules within
   rootDir: "../../",
-
-  // A list of paths to directories that Jest should use to search for files in
-  roots: ["<rootDir>"],
-  // The test environment that will be used for testing
-  testEnvironment: "jsdom",
-  // The glob patterns Jest uses to detect test files
-  testMatch: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
-
-  // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: ["/node_modules/"],
-  // An array of directory names to be searched recursively up from the requiring module's location
   moduleDirectories: ["node_modules"],
+  modulePaths: ["<rootDir>src"],
+  coveragePathIgnorePatterns: ["/node_modules/"],
+  setupFilesAfterEnv: ["<rootDir>config/jest/setupTests.ts"],
+  // testMatch: [
+  //   // "**/__tests__/**/*.[jt]s?(x)",
+  //   "<rootDir>src/**/?(*.)+(spec|test).[tj]s?(x)",
+  //   // "<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)",
+  // ],
+  testMatch: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
+  // testMatch: ["<rootDir>src/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
+  // Обнаружил разницу между МАК ОС и ВИНДОУС!!!
+  // '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  transformIgnorePatterns: ["/node_modules/", "\\.pnp\\.[^\\/]+$"],
+  // transformIgnorePatterns: ["/node_modules/", "\\.pnp\\.[^\\/]+$"],
+  moduleNameMapper: {
+    "\\.s?css$": "identity-obj-proxy",
+    "\\.svg$": "<rootDir>config/jest/jestEmptyFile.tsx",
+  },
+
+  // The directory where Jest should store its cached dependency information
+  // cacheDirectory: "/private/var/folders/x2/sdgxvfks78xcxwbv24_b6v6h0000gn/T/jest_dx",
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
@@ -149,6 +154,11 @@ const config: Config = {
 
   // Adds a location field to test results
   // testLocationInResults: false,
+
+  // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
+  // testPathIgnorePatterns: [
+  //   "/node_modules/"
+  // ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],

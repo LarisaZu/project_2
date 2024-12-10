@@ -20,4 +20,10 @@ export default [
       // "no-undef": "error",
     },
   },
+  {
+    files: ["**/src/**/*.test.{ts,tsx}"],
+    rules: {
+      "i18next/no-literal-string": "off",
+    },
+  },
 ];
