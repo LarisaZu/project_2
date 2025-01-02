@@ -15,6 +15,7 @@ export const Navbar = (props: INavbarProps) => {
   const { className } = props;
 
   const { t } = useTranslation();
+
   return (
     <div className={classNames(cls.navbar, [className])}>
       <div className={cls["nav-links"]}>

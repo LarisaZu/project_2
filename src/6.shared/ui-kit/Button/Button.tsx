@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, FC } from "react";
 import { classNames } from "6.shared/lib";
 import cls from "./Button.module.scss";
 
-export type TButtonVariant = "clear";
+export type TButtonVariant = "clear" | "outline";
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -10,7 +10,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: FC<IButtonProps> = (props: IButtonProps) => {
-  const { className, children, variant = "clear", ...otherProps } = props;
+  const { className, children, variant, ...otherProps } = props;
 
   return (
     <button

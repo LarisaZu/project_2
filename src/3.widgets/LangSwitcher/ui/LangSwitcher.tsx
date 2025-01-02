@@ -18,7 +18,11 @@ export const LangSwitcher = (props: ILangSwitcherProps) => {
   };
 
   return (
-    <Button className={classNames("", [className])} onClick={handleLangChange}>
+    <Button
+      className={classNames("", [className])}
+      variant="clear"
+      onClick={handleLangChange}
+    >
       {t("Язык")}
     </Button>
   );
