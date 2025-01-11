@@ -25,9 +25,9 @@ export const Sidebar = (props: ISidebarProps) => {
         [cls.collapsed]: collapsed,
       })}
     >
-      {/* <button data-testid="sidebar-toggle" onClick={handleCollapse}>
+      <button data-testid="sidebar-toggle" onClick={handleCollapse}>
         toggle
-      </button> */}
+      </button>
       <div className={cls.switchers}>
         <ThemeSwitcher />
         <LangSwitcher />
