@@ -5,7 +5,7 @@ export const MainPageAsync = lazy(
     new Promise((resolve) => {
       setTimeout(
         () =>
-          // @ts-ignore
+          // @ts-expect-error: Unreachable code error
           resolve(import("./MainPage")),
         1500
       );
