@@ -29,7 +29,8 @@ const config: StorybookConfig = {
     config.resolve.modules.push(paths.src);
 
     config.module.rules.push({
-      ...buildCssLoader(configType === "DEVELOPMENT"),
+      ...buildCssLoader(true),
+      // ...buildCssLoader(configType === "DEVELOPMENT"),
     });
 
     config.resolve.extensions.push(".tsx", ".ts");
