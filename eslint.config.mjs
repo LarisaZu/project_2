@@ -16,7 +16,8 @@ export default [
     rules: {
       "react/react-in-jsx-scope": "off",
       "react/no-deprecated": "warn",
-      // "no-unused-vars": "error",
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "warn",
       // "no-undef": "error",
     },
   },
