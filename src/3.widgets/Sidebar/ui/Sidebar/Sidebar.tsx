@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { ThemeSwitcher } from "3.widgets/ThemeSwitcher";
 import { LangSwitcher } from "3.widgets/LangSwitcher";
@@ -13,6 +14,8 @@ interface ISidebarProps {
 export const Sidebar = (props: ISidebarProps) => {
   const [collapsed, setCollapsed] = useState(false);
 
+  const { t } = useTranslation();
+
   const handleCollapse = () => {
     setCollapsed((prev) => !prev);
   };
@@ -26,7 +29,7 @@ export const Sidebar = (props: ISidebarProps) => {
       })}
     >
       <button data-testid="sidebar-toggle" onClick={handleCollapse}>
-        toggle
+        {t("Тогл")}
       </button>
       <div className={cls.switchers}>
         <ThemeSwitcher />
