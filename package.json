@@ -90,6 +90,7 @@
     ]
   },
   "loki": {
+    "diffingEngine": "looks-same",
     "configurations": {
       "chrome.laptop": {
         "target": "chrome.app",
