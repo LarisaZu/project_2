@@ -3,7 +3,7 @@ name: linting, testing, building
 # on: [push]
 on:
   push:
-    branches: [main]
+    branches: [main, module_3]
   pull_request:
     branches: [main, module_3]
 jobs:
