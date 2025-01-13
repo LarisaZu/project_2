@@ -62,3 +62,78 @@ export const OutlineDark: Story = {
     theme: THEME.DARK,
   },
 };
+
+export const OutlineSizeM: Story = {
+  args: {
+    variant: "outline",
+    size: "size_m",
+  },
+};
+
+export const OutlineSizeL: Story = {
+  args: {
+    variant: "outline",
+    size: "size_l",
+  },
+};
+
+export const OutlineSizeXL: Story = {
+  args: {
+    variant: "outline",
+    size: "size_xl",
+  },
+};
+
+export const Filled: Story = {
+  args: {
+    variant: "filled",
+  },
+};
+
+export const FilledDark: Story = {
+  args: {
+    variant: "filled",
+  },
+  parameters: {
+    theme: THEME.DARK,
+  },
+};
+
+export const FilledInverted: Story = {
+  args: {
+    variant: "filledInverted",
+  },
+};
+
+export const FilledInvertedDark: Story = {
+  args: {
+    variant: "filledInverted",
+  },
+  parameters: {
+    theme: THEME.DARK,
+  },
+};
+
+export const SquareSizeM: Story = {
+  args: {
+    square: true,
+    children: "<",
+    size: "size_m",
+  },
+};
+
+export const SquareSizeL: Story = {
+  args: {
+    square: true,
+    children: "<",
+    size: "size_l",
+  },
+};
+
+export const SquareSizeXL: Story = {
+  args: {
+    square: true,
+    children: "<",
+    size: "size_xl",
+  },
+};
