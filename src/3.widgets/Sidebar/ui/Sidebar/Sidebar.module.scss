@@ -15,14 +15,13 @@
 .items {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 10px;
+  margin-left: 30px;
 }
 
 .item {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
 }
 
@@ -51,9 +50,19 @@
     flex-direction: column;
   }
 
+  & .items {
+    margin: 0;
+    align-items: center;
+  }
+
+  .item {
+    gap: 0;
+  }
+
   & .item .link {
     opacity: 0;
     transition: opacity 0.2s;
     width: 0;
+    height: 0;
   }
 }
