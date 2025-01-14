@@ -8,10 +8,10 @@ on:
     branches: [main, module_3]
 jobs:
   pipeline:
-    runs-on: windows-2019
+    runs-on: macos-latest
     strategy:
       matrix:
-        node-version: [21.x]
+        node-version: [21]
     steps:
       - uses: actions/checkout@v2
       - name: Staring Node.js ${{matrix.node-version}}
