@@ -14,12 +14,12 @@ export const componentRender = (
   options: IRenderComponentOptions = {}
 ) => {
   const { route = "/" } = options;
+
   return render(
     <MemoryRouter initialEntries={[route]}>
       <Suspense fallback="">
         <I18nextProvider i18n={i18nForTests}>{component}</I18nextProvider>
       </Suspense>
-      {component}
     </MemoryRouter>
   );
 };

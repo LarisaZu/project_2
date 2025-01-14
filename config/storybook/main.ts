@@ -18,7 +18,7 @@ const config: StorybookConfig = {
     name: "@storybook/react-webpack5",
     options: {},
   },
-  webpackFinal: async (config, { configType }) => {
+  webpackFinal: async (config) => {
     const paths: IBuildPaths = {
       entry: "",
       build: "",
