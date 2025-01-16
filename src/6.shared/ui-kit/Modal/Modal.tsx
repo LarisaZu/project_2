@@ -22,20 +22,17 @@ export const Modal = (props: IModalProps) => {
     onClose?.();
   }, [onClose]);
 
-  const handleKeyDown = useCallback(
-    (evt: KeyboardEvent) => {
-      if (evt.key === "Escape") {
-        handleClose();
-      }
-    },
-    [handleClose]
-  );
-
   const handleContentClick = (evt: React.MouseEvent) => {
     evt.stopPropagation();
   };
 
   useEffect(() => {
+    const handleKeyDown = (evt: KeyboardEvent) => {
+      if (evt.key === "Escape") {
+        handleClose();
+      }
+    };
+
     if (isOpen) {
       window.addEventListener("keydown", handleKeyDown);
     }
@@ -45,7 +42,7 @@ export const Modal = (props: IModalProps) => {
         window.removeEventListener("keydown", handleKeyDown);
       }
     };
-  }, [handleKeyDown, isOpen]);
+  }, [isOpen, handleClose]);
 
   return (
     <Portal>
