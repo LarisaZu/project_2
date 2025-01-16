@@ -48,6 +48,21 @@ export const ClearDark: Story = {
   },
 };
 
+export const ClearInverted: Story = {
+  args: {
+    variant: "clearInverted",
+  },
+};
+
+export const ClearInvertedDark: Story = {
+  args: {
+    variant: "clearInverted",
+  },
+  parameters: {
+    theme: THEME.DARK,
+  },
+};
+
 export const Outline: Story = {
   args: {
     variant: "outline",

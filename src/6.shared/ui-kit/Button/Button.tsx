@@ -4,9 +4,10 @@ import cls from "./Button.module.scss";
 
 export enum EButtonVariant {
   CLEAR = "clear",
+  CLEAR_INVERTED = "clearInverted",
   OUTLINE = "outline",
   FILLED = "filled",
-  INVERTED_FILLED = "filledInverted",
+  FILLED_INVERTED = "filledInverted",
 }
 
 export enum EButtonSize {

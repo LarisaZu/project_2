@@ -6,10 +6,15 @@
   border-width: 1px;
 }
 
-.clear {
+.clear,
+.clearInverted {
   background: none;
   outline: none;
   border: none;
+}
+
+.clearInverted {
+  color: var(--inverted-color-primary);
 }
 
 .outline {

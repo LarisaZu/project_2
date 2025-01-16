@@ -3,6 +3,7 @@ import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
 import i18next from "eslint-plugin-i18next";
+import hooksPlugin from "eslint-plugin-react-hooks";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -13,12 +14,19 @@ export default [
   pluginReact.configs.flat.recommended,
   i18next.configs["flat/recommended"],
   {
+    plugins: {
+      "react-hooks": hooksPlugin,
+    },
+  },
+  {
     rules: {
       "react/react-in-jsx-scope": "off",
       "react/no-deprecated": "warn",
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "warn",
       // "no-undef": "error",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "error",
     },
   },
   {
