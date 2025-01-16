@@ -1,11 +1,11 @@
 name: linting, testing, building
 # run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-# on: [push]
-on:
-  push:
-    branches: [main, module_3]
-  pull_request:
-    branches: [main, module_3]
+on: [push]
+# on:
+#   push:
+#     branches: [main, module_3]
+#   pull_request:
+#     branches: [main, module_3]
 jobs:
   pipeline:
     runs-on: macos-latest
