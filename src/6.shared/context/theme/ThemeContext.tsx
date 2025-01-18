@@ -1,8 +1,8 @@
 import { createContext, Dispatch, SetStateAction } from "react";
 
 export enum THEME {
-  LIGHT = "light",
-  DARK = "dark",
+  LIGHT = "app_light_theme",
+  DARK = "app_dark_theme",
 }
 
 interface IThemeContext {
