@@ -24,6 +24,7 @@ export default [
       "react/no-deprecated": "warn",
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-require-imports": "off",
       // "no-undef": "error",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "error",
