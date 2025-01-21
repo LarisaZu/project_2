@@ -17,8 +17,9 @@
 }
 
 .content {
+  flex-grow: 1;
   padding: 20px;
-  max-width: 60%;
+  max-width: 50%;
   border-radius: 12px;
   background-color: var(--bg-color);
   color: var(--color-primary);

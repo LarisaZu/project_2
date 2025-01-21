@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { classNames } from "6.shared/lib";
-import { Modal } from "6.shared/ui-kit/Modal/Modal";
+
 import { Button } from "6.shared/ui-kit/Button/Button";
 
+import { classNames } from "6.shared/lib";
+
 import cls from "./Navbar.module.scss";
+import { LoginModal } from "4.features/AuthByUsername";
 
 export interface INavbarProps {
   className?: string;
@@ -17,22 +19,25 @@ export const Navbar = (props: INavbarProps) => {
 
   const { t } = useTranslation();
 
-  const handleToggleModal = () => {
-    setIsAuthModalOpen((prev) => !prev);
+  const handleCloseModal = () => {
+    setIsAuthModalOpen(false);
+  };
+
+  const handleOpenModal = () => {
+    setIsAuthModalOpen(true);
   };
 
   return (
     <div className={classNames(cls.navbar, [className])}>
       <Button
         className={cls["auth-button"]}
-        onClick={handleToggleModal}
+        onClick={handleOpenModal}
         variant="clearInverted"
       >
         {t("Войти")}
       </Button>
-      <Modal isOpen={isAuthModalOpen} onClose={handleToggleModal}>
-        {t("Lorem30")}
-      </Modal>
+
+      <LoginModal isOpen={isAuthModalOpen} onClose={handleCloseModal} />
     </div>
   );
 };
