@@ -18,6 +18,7 @@ const config: StorybookConfig = {
     name: "@storybook/react-webpack5",
     options: {},
   },
+  // staticDirs: ["../../public"],
   webpackFinal: async (config) => {
     const paths: IBuildPaths = {
       entry: "",
@@ -27,10 +28,14 @@ const config: StorybookConfig = {
     };
 
     config.resolve.modules.push(paths.src);
+    //  алиас для "config"
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      "@config": path.resolve(__dirname, "..", "..", "config"),
+    };
 
     config.module.rules.push({
       ...buildCssLoader(true),
-      // ...buildCssLoader(configType === "DEVELOPMENT"),
     });
 
     config.resolve.extensions.push(".tsx", ".ts");
@@ -50,6 +55,11 @@ const config: StorybookConfig = {
     config.plugins.push(
       new webpack.ProvidePlugin({
         React: "react",
+      })
+    );
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        __IS_DEV__: true,
       })
     );
 

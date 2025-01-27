@@ -152,3 +152,10 @@ export const SquareSizeXL: Story = {
     size: "size_xl",
   },
 };
+
+export const Disabled: Story = {
+  args: {
+    variant: "outline",
+    disabled: true,
+  },
+};

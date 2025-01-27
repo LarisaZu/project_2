@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { Decorator, StoryFn, Parameters } from "@storybook/react/*";
-import { ThemeProvider } from "1.app/providers/ThemeProvider";
 
 export const ThemeDecorator: Decorator = (
   Story: StoryFn,

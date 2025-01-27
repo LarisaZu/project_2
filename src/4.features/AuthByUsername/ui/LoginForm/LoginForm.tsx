@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "6.shared/ui-kit/Button/Button";
 import { Input } from "6.shared/ui-kit/Input/Input";
+import { Text } from "6.shared/ui-kit/Text/Text";
 
 import { classNames } from "6.shared/lib";
+import { useDispatch, useSelector } from "react-redux";
+import { loginFormActions } from "../../model/slice/loginFormSlice";
+import { getLoginState } from "../../model/selectors/getLoginState/getLoginState";
+import { loginByUsername } from "../../api/loginByUsername";
 import cls from "./LoginForm.module.scss";
 
 interface ILoginFormProps {
@@ -12,28 +17,53 @@ interface ILoginFormProps {
 }
 
 export const LoginForm = (props: ILoginFormProps) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const { className } = props;
 
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const { username, password, isLoading, error } = useSelector(getLoginState);
+
+  const handleUsernameChange = (value: string) => {
+    dispatch(loginFormActions.setUsername(value));
+  };
+
+  const handlePasswordChange = useCallback(
+    (value: string) => {
+      dispatch(loginFormActions.setPassword(value));
+    },
+    [dispatch]
+  );
+
+  const handleSubmitForm = () => {
+    dispatch(loginByUsername({ password, username }));
+  };
 
   return (
     <div className={classNames(cls.loginForm, [className])}>
+      <Text title={t("Форма авторизации")} />
+      {error && <Text text={t("Неверный логин или пароль")} variant="error" />}
       <Input
         id="username"
         value={username}
-        onChange={(s) => setUsername(s)}
+        onChange={handleUsernameChange}
         label={t("Введите логин")}
         autofocus
       />
       <Input
         id="password"
         value={password}
-        onChange={(s) => setPassword(s)}
+        onChange={handlePasswordChange}
         label={t("Введите пароль")}
       />
-      <Button className={cls.loginBtn}>{t("Войти")}</Button>
+      <Button
+        className={cls.loginBtn}
+        disabled={isLoading}
+        variant="outline"
+        onClick={handleSubmitForm}
+      >
+        {t("Войти")}
+      </Button>
     </div>
   );
 };

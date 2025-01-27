@@ -1,7 +1,7 @@
-import { ICounterSchema } from "5.entities/Counter";
+import { ILoginFormSchema } from "4.features/AuthByUsername";
 import { IUserSchema } from "5.entities/User";
 
 export interface IStateSchema {
-  counter: ICounterSchema;
   user: IUserSchema;
+  loginForm: ILoginFormSchema;
 }

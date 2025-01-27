@@ -6,9 +6,12 @@ import {
   I18nextDecorator,
 } from "6.shared/config/storybook";
 import { THEME } from "6.shared/context/theme/ThemeContext";
+import { IStateSchema } from "1.app/providers/StoreProvider/config/StateSchema";
+import { DeepPartial } from "@reduxjs/toolkit";
 
 export interface IParameters extends Parameters {
-  theme: THEME;
+  theme?: THEME;
+  state?: DeepPartial<IStateSchema>;
 }
 
 export interface IPreview extends Preview {
@@ -24,6 +27,7 @@ const preview: IPreview = {
       },
     },
     theme: THEME.LIGHT,
+    state: { loginForm: { username: "admin", password: "12" } },
   },
   decorators: [ThemeDecorator, RouterDecorator, I18nextDecorator],
 };
