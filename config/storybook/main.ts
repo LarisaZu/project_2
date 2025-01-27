@@ -18,7 +18,7 @@ const config: StorybookConfig = {
     name: "@storybook/react-webpack5",
     options: {},
   },
-  // staticDirs: ["../../public"],
+  staticDirs: ["../../public"],
   webpackFinal: async (config) => {
     const paths: IBuildPaths = {
       entry: "",

@@ -4,6 +4,7 @@ import {
   ThemeDecorator,
   RouterDecorator,
   I18nextDecorator,
+  StoreDecorator,
 } from "6.shared/config/storybook";
 import { THEME } from "6.shared/context/theme/ThemeContext";
 import { IStateSchema } from "1.app/providers/StoreProvider/config/StateSchema";
@@ -29,7 +30,12 @@ const preview: IPreview = {
     theme: THEME.LIGHT,
     state: { loginForm: { username: "admin", password: "12" } },
   },
-  decorators: [ThemeDecorator, RouterDecorator, I18nextDecorator],
+  decorators: [
+    ThemeDecorator,
+    RouterDecorator,
+    I18nextDecorator,
+    // StoreDecorator,
+  ],
 };
 
 export default preview;
