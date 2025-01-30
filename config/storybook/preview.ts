@@ -3,7 +3,7 @@ import "1.app/styles/index.scss";
 import {
   ThemeDecorator,
   RouterDecorator,
-  // I18nextDecorator,
+  I18nextDecorator,
 } from "6.shared/config/storybook";
 import { THEME } from "6.shared/context/theme/ThemeContext";
 import { IStateSchema } from "1.app/providers/StoreProvider/config/StateSchema";
@@ -32,7 +32,7 @@ const preview: IPreview = {
   decorators: [
     ThemeDecorator,
     RouterDecorator,
-    // I18nextDecorator,
+    I18nextDecorator,
     // StoreDecorator,
   ],
 };

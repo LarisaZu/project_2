@@ -12,13 +12,20 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: "ru",
+    lng: "ru",
     debug: __IS_DEV__,
 
     interpolation: {
       escapeValue: false,
     },
     backend: {
-      // loadPath: "/locales/{{lng}}/{{ns}}.json",
+      // loadPath: () => {
+      //   const isStorybook =
+      //     window.location.pathname.includes("storybook-static");
+      //   return isStorybook
+      //     ? "/storybook-static/locales/{{lng}}/{{ns}}.json"
+      //     : "/locales/{{lng}}/{{ns}}.json";
+      // },
       requestOptions: {
         cache: "no-store",
       },
