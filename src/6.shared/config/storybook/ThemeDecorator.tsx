@@ -15,10 +15,10 @@ export const ThemeDecorator: Decorator = (
   document.body.classList.add(theme);
 
   return (
-    <div className={`app ${theme}`}>
-      <ThemeProvider>
+    <ThemeProvider initialTheme={theme}>
+      <div className={`app ${theme}`}>
         <Story />
-      </ThemeProvider>
-    </div>
+      </div>
+    </ThemeProvider>
   );
 };
