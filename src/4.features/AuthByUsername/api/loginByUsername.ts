@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { IUser, userActions } from "5.entities/User";
+import { USER_LOCALSTORAGE_KEY } from "6.shared/const/localstorage";
 
 export interface ILoginByUsernameProps {
   username: string;
@@ -25,6 +26,10 @@ export const loginByUsername = createAsyncThunk<
         throw Error("Ошибка авторизации");
       }
 
+      localStorage.setItem(
+        USER_LOCALSTORAGE_KEY,
+        JSON.stringify(response.data)
+      );
       thunkAPI.dispatch(userActions.setUserAuthData(response.data));
 
       return response.data;

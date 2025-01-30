@@ -5,12 +5,14 @@ import { Navbar } from "3.widgets/Navbar";
 import { Sidebar } from "3.widgets/Sidebar/ui";
 import { classNames } from "6.shared/lib";
 import { userActions } from "5.entities/User";
+import { USER_LOCALSTORAGE_KEY } from "6.shared/const/localstorage";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(userActions.initUserAuthData());
+    const authData = JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY));
+    dispatch(userActions.initUserAuthData(authData));
   }, [dispatch]);
 
   return (

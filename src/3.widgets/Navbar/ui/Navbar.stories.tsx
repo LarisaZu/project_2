@@ -3,21 +3,36 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Navbar } from "./Navbar";
 import { THEME } from "6.shared/context/theme/ThemeContext";
 import { StoreDecorator } from "6.shared/config/storybook";
+import { IParameters } from "@config/storybook/preview";
 
-const meta = {
+type MetaWithParameters = Meta<typeof Navbar> & {
+  parameters?: IParameters;
+};
+
+const meta: MetaWithParameters = {
   title: "widgets/Navbar",
   component: Navbar,
   tags: ["autodocs"],
   decorators: [StoreDecorator],
-} satisfies Meta<typeof Navbar>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Light: Story = {};
+type Story = StoryObj<typeof meta> & {
+  parameters?: IParameters;
+};
 
-export const Dark: Story = {
+export const Primary: Story = {};
+
+export const DarkNavbar: Story = {
   parameters: {
     theme: THEME.DARK,
+  },
+};
+
+export const AuthNavbar: Story = {
+  parameters: {
+    theme: THEME.DARK,
+    state: { user: { authData: {} } },
   },
 };

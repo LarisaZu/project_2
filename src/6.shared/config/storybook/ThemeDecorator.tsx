@@ -17,7 +17,7 @@ export const ThemeDecorator: Decorator = (
   }, [theme]);
 
   return (
-    <div className="app">
+    <div className={`app ${theme}`}>
       <Story />
     </div>
   );

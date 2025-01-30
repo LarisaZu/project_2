@@ -8,6 +8,7 @@ import { Button } from "6.shared/ui-kit/Button/Button";
 
 import { classNames } from "6.shared/lib";
 import cls from "./Navbar.module.scss";
+import { USER_LOCALSTORAGE_KEY } from "6.shared/const/localstorage";
 
 export interface INavbarProps {
   className?: string;
@@ -32,7 +33,9 @@ export const Navbar = (props: INavbarProps) => {
   };
 
   const handleLogout = () => {
+    handleCloseModal();
     dispatch(userActions.logout());
+    localStorage.removeItem(USER_LOCALSTORAGE_KEY);
   };
 
   if (authData) {
