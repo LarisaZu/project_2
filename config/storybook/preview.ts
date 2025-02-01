@@ -1,3 +1,4 @@
+import { DeepPartial, ReducersMapObject } from "@reduxjs/toolkit";
 import type { Preview, Parameters } from "@storybook/react";
 import "1.app/styles/index.scss";
 import {
@@ -7,11 +8,11 @@ import {
 } from "6.shared/config/storybook";
 import { THEME } from "6.shared/context/theme/ThemeContext";
 import { IStateSchema } from "1.app/providers/StoreProvider";
-import { DeepPartial } from "@reduxjs/toolkit";
 
 export interface IParameters extends Parameters {
   theme?: THEME;
   state?: DeepPartial<IStateSchema>;
+  asyncReducers?: DeepPartial<ReducersMapObject<IStateSchema>>;
 }
 
 export interface IPreview extends Preview {

@@ -1,4 +1,5 @@
 npm run eslint:ts
 npm run eslint:scss
+npm run test:ui
 # npm run test:unit
 
