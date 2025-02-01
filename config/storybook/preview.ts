@@ -6,7 +6,7 @@ import {
   I18nextDecorator,
 } from "6.shared/config/storybook";
 import { THEME } from "6.shared/context/theme/ThemeContext";
-import { IStateSchema } from "1.app/providers/StoreProvider/config/StateSchema";
+import { IStateSchema } from "1.app/providers/StoreProvider";
 import { DeepPartial } from "@reduxjs/toolkit";
 
 export interface IParameters extends Parameters {

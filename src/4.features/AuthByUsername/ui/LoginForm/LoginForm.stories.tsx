@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { THEME } from "6.shared/context/theme/ThemeContext";
 import { StoreDecorator } from "6.shared/config/storybook";
-import { LoginForm } from "./LoginForm";
+import LoginForm from "./LoginForm";
 import { IParameters } from "@config/storybook/preview";
 
 type MetaWithParameters = Meta<typeof LoginForm> & {

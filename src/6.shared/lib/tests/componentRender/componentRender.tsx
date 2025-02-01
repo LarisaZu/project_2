@@ -5,7 +5,7 @@ import { I18nextProvider } from "react-i18next";
 
 import { StoreProvider } from "1.app/providers/StoreProvider";
 import i18nForTests from "6.shared/config/i18/i18nForTests";
-import { IStateSchema } from "1.app/providers/StoreProvider/config/StateSchema";
+import { IStateSchema } from "1.app/providers/StoreProvider";
 
 interface IRenderComponentOptions {
   route?: string;
