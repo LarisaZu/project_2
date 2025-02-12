@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ILoginFormSchema } from "../types/loginFormSchema";
 import { loginByUsername } from "../../api/loginByUsername";
 
-const initialState: ILoginFormSchema = {
+export const initialLoginFormState: ILoginFormSchema = {
   username: "",
   password: "",
   isLoading: false,
@@ -10,7 +10,7 @@ const initialState: ILoginFormSchema = {
 
 export const loginFormSlice = createSlice({
   name: "loginForm",
-  initialState,
+  initialState: initialLoginFormState,
   reducers: {
     setUsername: (state, action: PayloadAction<string>) => {
       state.username = action.payload;
