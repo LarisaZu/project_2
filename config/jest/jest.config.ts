@@ -50,6 +50,7 @@ const config = {
   moduleNameMapper: {
     "\\.s?css$": "identity-obj-proxy",
     "\\.svg$": "<rootDir>config/jest/jestEmptyFile.tsx",
+    axios: "axios/dist/node/axios.cjs",
   },
 
   // The directory where Jest should store its cached dependency information
