@@ -19,20 +19,6 @@
   margin-left: 30px;
 }
 
-.item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.active {
-  color: var(--accent-color);
-}
-
-.link {
-  opacity: 1;
-}
-
 .switchers {
   display: flex;
   gap: 5px;
@@ -53,16 +39,5 @@
   & .items {
     margin: 0;
     align-items: center;
-  }
-
-  .item {
-    gap: 0;
-  }
-
-  & .item .link {
-    opacity: 0;
-    transition: opacity 0.2s;
-    width: 0;
-    height: 0;
   }
 }

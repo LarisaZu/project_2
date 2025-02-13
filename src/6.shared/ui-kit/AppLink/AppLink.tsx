@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { memo, ReactNode } from "react";
 import { Link, LinkProps } from "react-router-dom";
 
 import { classNames } from "6.shared/lib";
@@ -9,17 +9,28 @@ export type TAppLinkVariant = "primary" | "inverted";
 interface IAppLinkProps extends LinkProps {
   className?: string;
   variant?: TAppLinkVariant;
+  active?: boolean;
+  children: ReactNode;
 }
 
-export const AppLink: FC<IAppLinkProps> = (props) => {
-  const { to, className, children, variant = "primary", ...otherProps } = props;
+export const AppLink = memo(function AppLink(props: IAppLinkProps) {
+  const {
+    to,
+    className,
+    children,
+    variant = "primary",
+    active = false,
+    ...otherProps
+  } = props;
+
+  const mods = { [cls.active]: active };
   return (
     <Link
       to={to}
-      className={classNames(cls.appLink, [className, cls[variant]])}
+      className={classNames(cls.appLink, [className, cls[variant]], mods)}
       {...otherProps}
     >
       {children}
     </Link>
   );
-};
+});

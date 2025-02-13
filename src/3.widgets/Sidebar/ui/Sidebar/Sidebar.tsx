@@ -1,15 +1,13 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import { useLocation } from "react-router-dom";
-import { AppRoute, routePath } from "6.shared/config/routeConfig/routeConfig";
-import { useTranslation } from "react-i18next";
 
 import { ThemeSwitcher } from "3.widgets/ThemeSwitcher";
 import { LangSwitcher } from "3.widgets/LangSwitcher";
 import { classNames } from "6.shared/lib";
-import HomeIcon from "6.shared/lib/assets/icons/home-icon.svg";
-import AboutIcon from "6.shared/lib/assets/icons/about-icon.svg";
 import { Button } from "6.shared/ui-kit/Button/Button";
-import { AppLink } from "6.shared/ui-kit/AppLink/AppLink";
+
+import { sidebarItemsList } from "../../model/items";
+import { SidebarItem } from "../SidebarItem/SidebarItem";
 
 import cls from "./Sidebar.module.scss";
 
@@ -17,7 +15,9 @@ interface ISidebarProps {
   className?: string;
 }
 
-export const Sidebar = (props: ISidebarProps) => {
+export const Sidebar = memo(function Sidebar(props: ISidebarProps) {
+  const { className } = props;
+
   const [collapsed, setCollapsed] = useState(false);
 
   const location = useLocation();
@@ -26,13 +26,10 @@ export const Sidebar = (props: ISidebarProps) => {
     return location.pathname === path;
   };
 
-  const { t } = useTranslation();
-
   const handleCollapse = () => {
     setCollapsed((prev) => !prev);
   };
 
-  const { className } = props;
   return (
     <div
       data-testid="sidebar"
@@ -41,30 +38,14 @@ export const Sidebar = (props: ISidebarProps) => {
       })}
     >
       <div className={cls.items}>
-        <AppLink
-          to={routePath[AppRoute.MAIN]}
-          className={classNames(cls.item, [], {
-            [cls.active]: isLinkActive(routePath[AppRoute.MAIN]),
-          })}
-        >
-          <span>
-            <HomeIcon />
-          </span>
-          <span className={cls.link}>{t(`pages.Главная`)}</span>
-        </AppLink>
-        <AppLink
-          to={routePath[AppRoute.ABOUT]}
-          className={classNames(cls.item, [], {
-            [cls.active]: isLinkActive(routePath[AppRoute.ABOUT]),
-          })}
-        >
-          <span>
-            <AboutIcon />
-          </span>
-          <span className={cls.link}>{t(`pages.О сайте`)}</span>
-        </AppLink>
+        {sidebarItemsList.map((item) => (
+          <SidebarItem
+            key={item.path}
+            collapsed={collapsed}
+            item={{ ...item, active: isLinkActive(item.path) }}
+          />
+        ))}
       </div>
-
       <Button
         data-testid="sidebar-toggle"
         className={cls.collapsedBtn}
@@ -85,4 +66,4 @@ export const Sidebar = (props: ISidebarProps) => {
       </div>
     </div>
   );
-};
+});

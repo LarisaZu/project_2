@@ -3,7 +3,8 @@ import { Routes, Route, RouteProps } from "react-router-dom";
 
 import { AboutPage } from "2.pages/AboutPage";
 import { MainPage } from "2.pages/MainPage";
-import { NotFoundPage } from "2.pages/NotFoundPage/ui";
+import { NotFoundPage } from "2.pages/NotFoundPage";
+import { ProfilePage } from "2.pages/ProfilePage";
 import { PageLoader } from "3.widgets/PageLoader";
 
 import { AppRoute, routePath } from "6.shared/config/routeConfig/routeConfig";
@@ -17,6 +18,11 @@ export const routeConfig: Record<AppRoute, RouteProps> = {
     path: routePath[AppRoute.ABOUT],
     element: <AboutPage />,
   },
+  [AppRoute.PROFILE]: {
+    path: routePath[AppRoute.PROFILE],
+    element: <ProfilePage />,
+  },
+  // last
   [AppRoute.NOT_FOUND]: {
     path: routePath[AppRoute.NOT_FOUND],
     element: <NotFoundPage />,
