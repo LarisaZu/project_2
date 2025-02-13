@@ -3,6 +3,8 @@ import { IStateSchema } from "./StateSchema";
 import { userReducer } from "5.entities/User";
 import { createReducerManager } from "./reducerManager";
 
+export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
+
 export const createReduxStore = (
   initialState: IStateSchema,
   asyncReducers?: ReducersMapObject<IStateSchema>
