@@ -1,4 +1,7 @@
+import { memo } from "react";
+
 import { classNames } from "6.shared/lib";
+
 import cls from "./Text.module.scss";
 
 export enum EText {
@@ -13,7 +16,7 @@ interface ITextProps {
   variant?: `${EText}`;
 }
 
-export const Text = (props: ITextProps) => {
+export const Text = memo(function Text(props: ITextProps) {
   const { className, text, title, variant = EText.PRIMARY } = props;
 
   return (
@@ -22,4 +25,4 @@ export const Text = (props: ITextProps) => {
       {text && <p className={cls.text}>{text}</p>}
     </div>
   );
-};
+});

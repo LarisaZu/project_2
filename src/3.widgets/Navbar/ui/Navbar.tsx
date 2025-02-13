@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
@@ -14,7 +14,7 @@ export interface INavbarProps {
   className?: string;
 }
 
-export const Navbar = (props: INavbarProps) => {
+export const Navbar = memo(function Navbar(props: INavbarProps) {
   const { className } = props;
 
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -33,7 +33,6 @@ export const Navbar = (props: INavbarProps) => {
   };
 
   const handleLogout = () => {
-    handleCloseModal();
     dispatch(userActions.logout());
     localStorage.removeItem(USER_LOCALSTORAGE_KEY);
   };
@@ -67,4 +66,4 @@ export const Navbar = (props: INavbarProps) => {
       )}
     </div>
   );
-};
+});
