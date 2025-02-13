@@ -1,5 +1,3 @@
-import { ILoginFormSchema } from "4.features/AuthByUsername";
-import { IUserSchema } from "5.entities/User";
 import { ToolkitStore } from "@reduxjs/toolkit/dist/configureStore";
 import {
   AnyAction,
@@ -8,11 +6,16 @@ import {
   ReducersMapObject,
 } from "@reduxjs/toolkit";
 
+import { ILoginFormSchema } from "4.features/AuthByUsername";
+import { IUserSchema } from "5.entities/User";
+import { IProfileSchema } from "5.entities/Profile";
+
 export interface IStateSchema {
   user: IUserSchema;
 
   // Асинхронные редюсеры
   loginForm?: ILoginFormSchema;
+  profile?: IProfileSchema;
 }
 
 export type TStateSchemaKeys = keyof IStateSchema;

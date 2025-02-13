@@ -25,5 +25,14 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "firstName": "Homer",
+    "lastName": "Simpson",
+    "age": 45,
+    "country": "USA",
+    "currency": "USD",
+    "city": "New York",
+    "username": "admin",
+    "avatar": "https://cdn1.ozone.ru/s3/multimedia-1/6463945753.jpg"
+  }
 }
