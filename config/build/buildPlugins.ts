@@ -8,7 +8,7 @@ import { IBuildOptions } from "./types/config";
 export function buildPlugins(
   options: IBuildOptions
 ): webpack.WebpackPluginInstance[] {
-  const { paths, isDev } = options;
+  const { paths, isDev, apiUrl } = options;
 
   const plugins = [
     new HtmlWebpackPlugin({
@@ -21,6 +21,7 @@ export function buildPlugins(
     }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
+      __API__: JSON.stringify(apiUrl),
     }),
   ];
 
