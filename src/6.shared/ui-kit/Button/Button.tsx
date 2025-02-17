@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, memo } from "react";
-import { classNames } from "6.shared/lib";
+import { classNames, TMods } from "6.shared/lib";
 import cls from "./Button.module.scss";
 
 export enum EButtonVariant {
@@ -28,14 +28,14 @@ export const Button = memo(function Button(props: IButtonProps) {
   const {
     className,
     children,
-    variant,
+    variant = "outline",
     square,
     size = "size_l",
     disabled,
     ...otherProps
   } = props;
 
-  const mods: Record<string, boolean> = {
+  const mods: TMods = {
     [cls.square]: square,
     [cls.disabled]: disabled,
   };

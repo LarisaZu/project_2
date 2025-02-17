@@ -1,8 +1,11 @@
-type TMods = Record<string, string | boolean>;
+export type TMods =
+  | Record<string, string | boolean | undefined | null>
+  | null
+  | undefined;
 
 export const classNames = (
   cls: string,
-  addition: string[] = [],
+  addition: Array<string | undefined> = [],
   mods?: TMods
 ): string => {
   return [

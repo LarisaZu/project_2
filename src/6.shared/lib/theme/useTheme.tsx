@@ -14,14 +14,14 @@ export const useTheme = (): IThemeResult => {
   const { theme, setTheme } = useContext(ThemeContext);
 
   useEffect(() => {
-    document.body.className = theme;
+    document.body.className = theme || THEME.LIGHT;
   }, [theme]);
 
   const toggleTheme = () => {
     const newTheme = theme === THEME.DARK ? THEME.LIGHT : THEME.DARK;
-    setTheme(newTheme);
+    setTheme?.(newTheme);
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
   };
 
-  return { theme, toggleTheme };
+  return { theme: theme || THEME.LIGHT, toggleTheme };
 };

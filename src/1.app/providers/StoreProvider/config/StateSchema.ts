@@ -38,7 +38,7 @@ export interface ReduxStoreWithManager extends ToolkitStore<IStateSchema> {
 
 export interface IThunkExtraArg {
   api: AxiosInstance;
-  navigate: NavigateFunction;
+  navigate?: NavigateFunction;
 }
 
 export interface IThunkConfig<T> {

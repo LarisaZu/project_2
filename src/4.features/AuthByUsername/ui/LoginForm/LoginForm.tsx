@@ -1,5 +1,5 @@
 import { useCallback, memo } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "6.shared/ui-kit/Button/Button";

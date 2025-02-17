@@ -1,4 +1,9 @@
-import { configureStore, ReducersMapObject } from "@reduxjs/toolkit";
+import {
+  CombinedState,
+  configureStore,
+  Reducer,
+  ReducersMapObject,
+} from "@reduxjs/toolkit";
 import { NavigateFunction } from "react-router-dom";
 
 import { userReducer } from "5.entities/User";
@@ -22,7 +27,7 @@ export const createReduxStore = (
   const reducerManager = createReducerManager(rootReducers);
 
   const store = configureStore({
-    reducer: reducerManager.reduce,
+    reducer: reducerManager.reduce as Reducer<CombinedState<IStateSchema>>,
     devTools: __IS_DEV__,
     preloadedState: initialState,
     middleware: (getDefaultMiddleware) =>

@@ -7,8 +7,6 @@ import { Input } from "6.shared/ui-kit/Input/Input";
 import { classNames } from "6.shared/lib";
 
 import { getProfileData } from "../../model/selectors/getProfileData/getProfileData";
-import { getProfileIsLoading } from "../../model/selectors/getProfileIsLoading/getProfileIsLoading";
-import { getProfileError } from "../../model/selectors/getProfileError/getProfileError";
 
 import cls from "./ProfileCard.module.scss";
 
@@ -20,8 +18,6 @@ export const ProfileCard = (props: IProfileCardProps) => {
   const { className } = props;
 
   const profile = useSelector(getProfileData);
-  const isLoading = useSelector(getProfileIsLoading);
-  const error = useSelector(getProfileError);
 
   const { t } = useTranslation("profile");
 

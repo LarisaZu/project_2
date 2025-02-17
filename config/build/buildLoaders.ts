@@ -24,6 +24,10 @@ export function buildLoaders(options: IBuildOptions): webpack.RuleSetRule[] {
     test: /\.tsx?$/,
     use: "ts-loader",
     exclude: /node_modules/,
+    // options: {
+    //   // чтобы не ломать сборку
+    //   transpileOnly: true,
+    // },
   };
 
   const babelLoader = {
