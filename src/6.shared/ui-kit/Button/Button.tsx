@@ -6,6 +6,7 @@ export enum EButtonVariant {
   CLEAR = "clear",
   CLEAR_INVERTED = "clearInverted",
   OUTLINE = "outline",
+  OUTLINE_RED = "outline_red",
   FILLED = "filled",
   FILLED_INVERTED = "filledInverted",
 }

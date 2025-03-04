@@ -7,6 +7,7 @@ import { buildCssLoader } from "../build/loaders/buildCssLoader";
 
 const config: StorybookConfig = {
   stories: ["../../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+
   addons: [
     "@storybook/addon-webpack5-compiler-swc",
     "@storybook/addon-onboarding",
@@ -14,11 +15,14 @@ const config: StorybookConfig = {
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
   ],
+
   framework: {
     name: "@storybook/react-webpack5",
     options: {},
   },
+
   staticDirs: ["../../public"],
+
   webpackFinal: async (config) => {
     const paths: IBuildPaths = {
       entry: "",
@@ -59,12 +63,16 @@ const config: StorybookConfig = {
     );
     config.plugins.push(
       new webpack.DefinePlugin({
-        __IS_DEV__: true,
-        __API__: "",
+        __IS_DEV__: JSON.stringify(true),
+        __API__: JSON.stringify(""),
       })
     );
 
     return config;
+  },
+
+  docs: {
+    autodocs: true,
   },
 };
 export default config;

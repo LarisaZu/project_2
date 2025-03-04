@@ -5,12 +5,12 @@ import React, {
   useEffect,
   memo,
 } from "react";
-import { classNames } from "6.shared/lib";
+import { classNames, TMods } from "6.shared/lib";
 import cls from "./Input.module.scss";
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  "value" | "onChange" | "onKeyUp"
+  "value" | "onChange" | "onKeyUp" | "readOnly"
 >;
 
 interface IInputProps extends HTMLInputProps {
@@ -21,6 +21,7 @@ interface IInputProps extends HTMLInputProps {
   label?: string;
   id: string;
   autofocus?: boolean;
+  readonly?: boolean;
 }
 
 export const Input = memo(function Input(props: IInputProps) {
@@ -32,6 +33,7 @@ export const Input = memo(function Input(props: IInputProps) {
     label,
     id,
     autofocus,
+    readonly,
     ...otherProps
   } = props;
 
@@ -40,6 +42,8 @@ export const Input = memo(function Input(props: IInputProps) {
   const [font, setFont] = useState("");
 
   const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const isCaretVisible = isFocused && !readonly;
 
   // Функция для расчёта ширины текста
   const getTextWidth = (text: string, font: string): number => {
@@ -70,7 +74,7 @@ export const Input = memo(function Input(props: IInputProps) {
   const handleCaretPosition = () => {
     if (inputRef.current) {
       const position = inputRef.current.selectionStart || 0;
-      const textBeforeCaret = value.slice(0, position);
+      const textBeforeCaret = value?.slice(0, position);
       const offset = getTextWidth(textBeforeCaret, font);
       //   setCaretPosition(position);
       setCaretOffset(offset);
@@ -79,6 +83,7 @@ export const Input = memo(function Input(props: IInputProps) {
 
   const onChangeHandler = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = evt.target;
+
     onChange?.(value);
     handleCaretPosition();
   };
@@ -96,8 +101,12 @@ export const Input = memo(function Input(props: IInputProps) {
     handleCaretPosition();
   };
 
+  const mods: TMods = {
+    [cls.readonly]: readonly,
+  };
+
   return (
-    <div className={classNames(cls.inputWrapper, [className])}>
+    <div className={classNames(cls.inputWrapper, [className], mods)}>
       {label && <label htmlFor={id} className={cls.label}>{`${label}>`}</label>}
 
       <div className={cls.caretWrapper}>
@@ -111,9 +120,10 @@ export const Input = memo(function Input(props: IInputProps) {
           onFocus={onFocusHandler}
           onBlur={onBlurHandler}
           onSelect={onSelectHandler}
+          readOnly={readonly}
           {...otherProps}
         />
-        {isFocused && (
+        {isCaretVisible && (
           <span className={cls.caret} style={{ left: `${caretOffset}px` }} />
         )}
       </div>

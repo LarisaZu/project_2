@@ -23,6 +23,13 @@
   border: 1px solid var(--color-primary);
 }
 
+.outline_red {
+  background: none;
+  outline: none;
+  border: 1px solid var(--red-light);
+  color: var(--red-light);
+}
+
 .filled {
   background-color: var(--bg-color);
   color: var(--color-primary);

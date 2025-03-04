@@ -7,13 +7,12 @@ import { classNames } from "6.shared/lib";
 import { userActions } from "5.entities/User";
 import { USER_LOCALSTORAGE_KEY } from "6.shared/const/localstorage";
 
+
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const authData = JSON.parse(
-      localStorage.getItem(USER_LOCALSTORAGE_KEY) || ""
-    );
+    const authData = JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_KEY));
     dispatch(userActions.initUserAuthData(authData));
   }, [dispatch]);
 
