@@ -2,11 +2,13 @@ import { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import {
+  EValidateProfileError,
   fetchProfileData,
   getProfileError,
   getProfileFormData,
   getProfileIsLoading,
   getProfileReadonly,
+  getProfileValidateErrors,
   profileActions,
   profileReducer,
 } from "5.entities/Profile";
@@ -19,6 +21,8 @@ import { useAppDispatch } from "6.shared/lib/hooks";
 import { ECurrency } from "5.entities/Currency";
 import { ECountry } from "5.entities/Country";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
+import { Text } from "6.shared/ui-kit/Text/Text";
+import { useTranslation } from "react-i18next";
 
 const initialReducers: TReducersList = { profile: profileReducer };
 
@@ -29,6 +33,16 @@ const ProfilePage = () => {
   const error = useSelector(getProfileError);
   const isLoading = useSelector(getProfileIsLoading);
   const readonly = useSelector(getProfileReadonly);
+  const validateErrors = useSelector(getProfileValidateErrors);
+
+  const { t } = useTranslation("profile");
+
+  const validateErrorTranslates = {
+    [EValidateProfileError.NO_DATA]: t("Отсутствуют данные пользователя"),
+    [EValidateProfileError.INCORRECT_USER_DATA]: t("Имя и фамилия обязательны"),
+    [EValidateProfileError.INCORRECT_COUNTRY]: t("Страна обязательна"),
+    [EValidateProfileError.SERVER_ERROR]: t("Произошла ошибка на сервере"),
+  };
 
   useEffect(() => {
     dispatch(fetchProfileData());
@@ -93,6 +107,10 @@ const ProfilePage = () => {
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
       <ProfilePageHeader readonly={readonly} />
+      {validateErrors?.length &&
+        validateErrors.map((err) => (
+          <Text key={err} variant="error" text={validateErrorTranslates[err]} />
+        ))}
       <ProfileCard
         data={data}
         error={error}

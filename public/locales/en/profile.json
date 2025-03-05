@@ -12,5 +12,9 @@
   "При загрузке профиля произошла ошибка": "An error occurred while loading a profile",
   "Попробуйте перезагрузить страницу": "Please try reloading the page",
   "Сохранить": "Save",
-  "Отмена": "Cancel"
+  "Отмена": "Cancel",
+  "Отсутствуют данные пользователя": "No user data",
+  "Имя и фамилия обязательны": "First and last name required",
+  "Страна обязательна": "Country required",
+  "Произошла ошибка на сервере": "There was an error on the server"
 }
