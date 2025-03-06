@@ -2,21 +2,37 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { THEME } from "6.shared/context/theme/ThemeContext";
 import { Sidebar } from "./Sidebar";
+import { IParameters } from "@config/storybook/preview";
+import { StoreDecorator } from "6.shared/config/storybook";
 
-const meta = {
+type MetaWithParameters = Meta<typeof Sidebar> & {
+  parameters?: IParameters;
+};
+
+const meta: MetaWithParameters = {
   title: "widgets/Sidebar",
   component: Sidebar,
   tags: ["autodocs"],
-  //  onClick: fn()
-} satisfies Meta<typeof Sidebar>;
+  decorators: [StoreDecorator],
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Light: Story = {};
+type Story = StoryObj<typeof meta> & {
+  parameters?: IParameters;
+};
+
+export const Light: Story = {
+  parameters: {
+    state: { user: { authData: {} } },
+  },
+};
 
 export const Dark: Story = {
   parameters: {
     theme: THEME.DARK,
+    state: { user: { authData: {} } },
   },
 };
+
+export const NoAuth: Story = {};

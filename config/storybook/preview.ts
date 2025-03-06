@@ -28,7 +28,9 @@ const preview: IPreview = {
       },
     },
     theme: THEME.LIGHT,
-    state: { loginForm: { username: "admin", password: "12" } },
+    state: {
+      loginForm: { username: "admin", password: "12", isLoading: false },
+    },
   },
   decorators: [
     ThemeDecorator,

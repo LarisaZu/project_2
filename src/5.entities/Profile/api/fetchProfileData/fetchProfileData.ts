@@ -15,7 +15,7 @@ export const fetchProfileData = createAsyncThunk<
     try {
       const response = await extra.api.get<IProfile>("/profile");
       if (!response.data) {
-        throw Error("Ошибка авторизации");
+        throw Error("Ошибка получения данных профиля");
       }
 
       return response.data;

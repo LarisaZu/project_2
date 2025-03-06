@@ -31,42 +31,49 @@ const config: StorybookConfig = {
       src: path.resolve(__dirname, "..", "..", "src"),
     };
 
-    config.resolve.modules.push(paths.src);
-    //  алиас для "config"
-    config.resolve.alias = {
-      ...(config.resolve.alias || {}),
-      "@config": path.resolve(__dirname, "..", "..", "config"),
-    };
+    if (config?.resolve) {
+      config.resolve?.modules?.push(paths.src);
+      //  алиас для "config"
+      config.resolve.alias = {
+        ...(config.resolve.alias || {}),
+        "@config": path.resolve(__dirname, "..", "..", "config"),
+      };
 
-    config.module.rules.push({
-      ...buildCssLoader(true),
-    });
+      config.resolve?.extensions?.push(".tsx", ".ts");
+    }
 
-    config.resolve.extensions.push(".tsx", ".ts");
+    if (config?.module?.rules) {
+      config.module.rules.push({
+        ...buildCssLoader(true),
+      });
 
-    config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-      if (/svg/.test(rule.test as string)) {
-        return { ...rule, exclude: /\.svg$/i };
-      }
-      return rule;
-    });
+      config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
+        if (/svg/.test(rule.test as string)) {
+          return { ...rule, exclude: /\.svg$/i };
+        }
+        return rule;
+      });
 
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ["@svgr/webpack"],
-    });
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+      });
+    }
 
-    config.plugins.push(
-      new webpack.ProvidePlugin({
-        React: "react",
-      })
-    );
-    config.plugins.push(
-      new webpack.DefinePlugin({
-        __IS_DEV__: JSON.stringify(true),
-        __API__: JSON.stringify(""),
-      })
-    );
+    if (config?.plugins) {
+      config.plugins.push(
+        new webpack.ProvidePlugin({
+          React: "react",
+        })
+      );
+      config.plugins.push(
+        new webpack.DefinePlugin({
+          __IS_DEV__: JSON.stringify(true),
+          __API__: JSON.stringify(""),
+          __PROJECT__: JSON.stringify("storybook"),
+        })
+      );
+    }
 
     return config;
   },

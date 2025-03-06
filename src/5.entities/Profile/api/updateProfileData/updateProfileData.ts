@@ -24,7 +24,7 @@ export const updateProfileData = createAsyncThunk<
 
       const response = await extra.api.put<IProfile>("/profile", formData);
       if (!response.data) {
-        throw Error("Ошибка авторизации");
+        throw Error("ошибка");
       }
 
       return response.data;
