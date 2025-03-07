@@ -18,7 +18,7 @@ export const AppLink = memo(function AppLink(props: IAppLinkProps) {
     to,
     className,
     children,
-    variant = "primary",
+    variant = "inverted",
     active = false,
     ...otherProps
   } = props;
