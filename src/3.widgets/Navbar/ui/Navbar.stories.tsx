@@ -33,6 +33,6 @@ export const DarkNavbar: Story = {
 export const AuthNavbar: Story = {
   parameters: {
     theme: THEME.DARK,
-    state: { user: { authData: {} } },
+    state: { user: { authData: { id: "1", username: "admin" } } },
   },
 };

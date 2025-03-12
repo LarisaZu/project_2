@@ -24,14 +24,14 @@ type Story = StoryObj<typeof meta> & {
 
 export const Light: Story = {
   parameters: {
-    state: { user: { authData: {} } },
+    state: { user: { authData: { id: "1", username: "admin" } } },
   },
 };
 
 export const Dark: Story = {
   parameters: {
     theme: THEME.DARK,
-    state: { user: { authData: {} } },
+    state: { user: { authData: { id: "1", username: "admin" } } },
   },
 };
 

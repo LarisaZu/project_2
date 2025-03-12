@@ -47,12 +47,21 @@ const config: StorybookConfig = {
         ...buildCssLoader(true),
       });
 
-      config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
-        if (/svg/.test(rule.test as string)) {
-          return { ...rule, exclude: /\.svg$/i };
-        }
-        return rule;
-      });
+      config.module.rules = config.module.rules
+        .filter(
+          (rule): rule is RuleSetRule =>
+            rule !== null &&
+            rule !== undefined &&
+            typeof rule === "object" &&
+            !Array.isArray(rule) &&
+            (rule as RuleSetRule).test !== undefined
+        )
+        .map((rule: RuleSetRule) => {
+          if (/svg/.test(rule.test as string)) {
+            return { ...rule, exclude: /\.svg$/i };
+          }
+          return rule;
+        });
 
       config.module.rules.push({
         test: /\.svg$/,

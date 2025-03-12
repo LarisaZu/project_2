@@ -35,6 +35,7 @@ export const Error: Story = {
         username: "admin",
         password: "12",
         error: "Ошибка авторизации",
+        isLoading: false,
       },
     },
   },

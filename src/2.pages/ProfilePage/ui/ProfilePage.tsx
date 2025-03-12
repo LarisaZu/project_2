@@ -66,7 +66,7 @@ const ProfilePage = () => {
 
   const handleChangeAge = useCallback(
     (value?: string) => {
-      dispatch(profileActions.updateProfile({ age: value || "" }));
+      dispatch(profileActions.updateProfile({ age: Number(value || 0) }));
     },
     [dispatch]
   );
