@@ -23,6 +23,8 @@ body > iframe {
 }
 
 .page-wrapper {
+  height: calc(100vh - var(--navbar-height));
+  overflow: auto;
   flex-grow: 1;
-  padding: var(--app-padding);
+  padding: 20px 20px 20px 45px;
 }

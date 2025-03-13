@@ -11,6 +11,7 @@ import { NavigateFunction } from "react-router-dom";
 import { ILoginFormSchema } from "4.features/AuthByUsername";
 import { IUserSchema } from "5.entities/User";
 import { IProfileSchema } from "5.entities/Profile";
+import { IArticleDetailsSchema } from "5.entities/Article";
 
 export interface IStateSchema {
   user: IUserSchema;
@@ -18,6 +19,7 @@ export interface IStateSchema {
   // Асинхронные редюсеры
   loginForm?: ILoginFormSchema;
   profile?: IProfileSchema;
+  articleDetails?: IArticleDetailsSchema;
 }
 
 export type TStateSchemaKeys = keyof IStateSchema;
