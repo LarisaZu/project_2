@@ -1,6 +1,7 @@
 import React from "react";
 import HomeIcon from "6.shared/lib/assets/icons/home-icon.svg";
 import ProfileIcon from "6.shared/lib/assets/icons/profile.svg";
+import ArticleIcon from "6.shared/lib/assets/icons/article.svg";
 import AboutIcon from "6.shared/lib/assets/icons/about-icon.svg";
 import { AppRoute, routePath } from "6.shared/config/routeConfig/routeConfig";
 
@@ -29,6 +30,13 @@ export const sidebarItemsList: ISidebarItem[] = [
     title: "Профиль",
     path: routePath[AppRoute.PROFILE],
     Icon: ProfileIcon,
+    active: false,
+    authOnly: true,
+  },
+  {
+    title: "Статьи",
+    path: routePath[AppRoute.ARTICLES],
+    Icon: ArticleIcon,
     active: false,
     authOnly: true,
   },

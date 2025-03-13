@@ -1,6 +1,11 @@
 {
   "Язык": "РУ",
-  "pages": { "Главная": "Main", "О сайте": "About", "Профиль": "Profile" },
+  "pages": {
+    "Главная": "Main",
+    "О сайте": "About",
+    "Профиль": "Profile",
+    "Статьи": "Articles"
+  },
   "Страница не найдена": "Page not found",
   "Что-то пошло не так": "Something went wrong",
   "Обновить страницу": "Refresh the page",

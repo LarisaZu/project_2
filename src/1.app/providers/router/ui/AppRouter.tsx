@@ -5,6 +5,8 @@ import { AboutPage } from "2.pages/AboutPage";
 import { MainPage } from "2.pages/MainPage";
 import { NotFoundPage } from "2.pages/NotFoundPage";
 import { ProfilePage } from "2.pages/ProfilePage";
+import { ArticlesPage } from "2.pages/ArticlesPage";
+import { ArticleDetailsPage } from "2.pages/ArticleDetailsPage";
 import { PageLoader } from "3.widgets/PageLoader";
 import { AppRoute, routePath } from "6.shared/config/routeConfig/routeConfig";
 import { RequireAuth } from "./RequireAuth";
@@ -23,6 +25,16 @@ export const routeConfig: Record<AppRoute, TAppRouteProps> = {
   [AppRoute.PROFILE]: {
     path: routePath[AppRoute.PROFILE],
     element: <ProfilePage />,
+    authOnly: true,
+  },
+  [AppRoute.ARTICLES]: {
+    path: routePath[AppRoute.ARTICLES],
+    element: <ArticlesPage />,
+    authOnly: true,
+  },
+  [AppRoute.ARTICLE_DETAILS]: {
+    path: routePath[AppRoute.ARTICLE_DETAILS] + ":articleId",
+    element: <ArticleDetailsPage />,
     authOnly: true,
   },
   // last
