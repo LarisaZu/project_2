@@ -2,7 +2,7 @@
 @import "./variables/global";
 @import "./themes/dark";
 @import "./themes/normal";
-@import "./themes/red.scss";
+@import "./themes/red";
 
 body {
   font: var(--font-l);
@@ -23,6 +23,7 @@ body > iframe {
 }
 
 .page-wrapper {
+  width: 100%;
   height: calc(100vh - var(--navbar-height));
   overflow: auto;
   flex-grow: 1;

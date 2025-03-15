@@ -14,24 +14,27 @@ interface IArticleBaseBlock {
   type: EArticleBlockType;
 }
 
-interface IArticleCodeBlock extends IArticleBaseBlock {
+export interface IArticleCodeBlock extends IArticleBaseBlock {
   type: EArticleBlockType.CODE;
   code: string;
 }
 
-interface IArticleTextBlock extends IArticleBaseBlock {
+export interface IArticleTextBlock extends IArticleBaseBlock {
   type: EArticleBlockType.TEXT;
   title?: string;
   paragraphs: string[];
 }
 
-interface IArticleImageBlock extends IArticleBaseBlock {
+export interface IArticleImageBlock extends IArticleBaseBlock {
   type: EArticleBlockType.IMAGE;
   src: string;
   title: string;
 }
 
-type TArticleBlock = IArticleCodeBlock | IArticleTextBlock | IArticleImageBlock;
+export type TArticleBlock =
+  | IArticleCodeBlock
+  | IArticleTextBlock
+  | IArticleImageBlock;
 
 export enum EArticleType {
   IT = "IT",

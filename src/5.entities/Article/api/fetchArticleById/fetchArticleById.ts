@@ -20,7 +20,7 @@ export const fetchArticleById = createAsyncThunk<
 
       return response.data;
     } catch (error) {
-      return rejectWithValue("ошибка получения данных ");
+      return rejectWithValue("ошибка получения статьи");
     }
   }
 );

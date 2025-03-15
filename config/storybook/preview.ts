@@ -13,6 +13,7 @@ export interface IParameters extends Parameters {
   theme?: THEME;
   state?: DeepPartial<IStateSchema>;
   asyncReducers?: DeepPartial<ReducersMapObject<IStateSchema>>;
+  router?: { path: string; route: string };
 }
 
 export interface IPreview extends Preview {

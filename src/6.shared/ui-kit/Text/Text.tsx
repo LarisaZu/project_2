@@ -9,6 +9,11 @@ export enum EText {
   ERROR = "error",
 }
 
+export enum ETextSize {
+  M = "size_m",
+  L = "size_l",
+}
+
 type TTextAlign = "left" | "right" | "center";
 
 interface ITextProps {
@@ -17,6 +22,7 @@ interface ITextProps {
   title?: string;
   variant?: `${EText}`;
   align?: TTextAlign;
+  size?: `${ETextSize}`;
 }
 
 export const Text = memo(function Text(props: ITextProps) {
@@ -26,6 +32,7 @@ export const Text = memo(function Text(props: ITextProps) {
     title,
     variant = EText.PRIMARY,
     align = "left",
+    size = "size_m",
   } = props;
 
   return (
@@ -34,6 +41,7 @@ export const Text = memo(function Text(props: ITextProps) {
         className,
         cls[variant],
         cls[align],
+        cls[size],
       ])}
     >
       {title && <p className={cls.title}>{title}</p>}

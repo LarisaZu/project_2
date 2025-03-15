@@ -41,3 +41,9 @@ export const Error: Story = {
     variant: "error",
   },
 };
+
+export const SizeL: Story = {
+  args: {
+    size: "size_l",
+  },
+};

@@ -49,6 +49,12 @@ export const ProfilePageDark: Story = {
   },
 };
 
+export const ProfilePageRed: Story = {
+  parameters: {
+    theme: THEME.RED,
+  },
+};
+
 export const ProfilePageEditable: Story = {
   parameters: {
     state: {

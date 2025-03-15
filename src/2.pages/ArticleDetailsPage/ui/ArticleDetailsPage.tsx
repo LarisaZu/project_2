@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { ArticleDetails } from "5.entities/Article";
 import { classNames } from "6.shared/lib";
 
-import cls from "./ArticleDetailsPage.scss";
+import cls from "./ArticleDetailsPage.module.scss";
 
 interface IArticleDetailsPageProps {
   className?: string;
@@ -27,7 +27,11 @@ const ArticleDetailsPage = memo(function ArticleDetailsPage(
     content = <ArticleDetails id={articleId} />;
   }
 
-  return <div className={classNames("", [className])}>{content}</div>;
+  return (
+    <div className={classNames(cls.articleDetailsPage, [className])}>
+      {content}
+    </div>
+  );
 });
 
 export default ArticleDetailsPage;
