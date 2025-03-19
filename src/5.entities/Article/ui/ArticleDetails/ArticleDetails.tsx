@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect } from "react";
+import React, { memo, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
@@ -12,7 +12,7 @@ import {
   DynamicModuleLoader,
   TReducersList,
 } from "6.shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { useAppDispatch } from "6.shared/lib/hooks";
+import { useAppDispatch, useInitialEffect } from "6.shared/lib/hooks";
 import { Text } from "6.shared/ui-kit/Text/Text";
 import { Skeleton } from "6.shared/ui-kit/Skeleton/Skeleton";
 import { Avatar } from "6.shared/ui-kit/Avatar/Avatar";
@@ -50,11 +50,7 @@ export const ArticleDetails = memo(function ArticleDetails(
 
   const { t } = useTranslation("article_details");
 
-  useEffect(() => {
-    if (__PROJECT__ !== "storybook") {
-      dispatch(fetchArticleById(id));
-    }
-  }, [dispatch, id]);
+  useInitialEffect(() => dispatch(fetchArticleById(id)));
 
   const renderBlock = useCallback((block: TArticleBlock) => {
     switch (block.type) {

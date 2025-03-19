@@ -2,10 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { IParameters } from "@config/storybook/preview";
 
 import { THEME } from "6.shared/context/theme/ThemeContext";
-import {
-  ArticleDetailsPageRouterDecorator,
-  StoreDecorator,
-} from "6.shared/config/storybook";
+import { StoreDecorator } from "6.shared/config/storybook";
 
 import ArticleDetailsPage from "./ArticleDetailsPage";
 import {

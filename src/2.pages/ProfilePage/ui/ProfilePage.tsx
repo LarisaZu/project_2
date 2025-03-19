@@ -1,5 +1,6 @@
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import {
   EValidateProfileError,
@@ -12,17 +13,16 @@ import {
   profileActions,
   profileReducer,
 } from "5.entities/Profile";
+import { ECurrency } from "5.entities/Currency";
+import { ECountry } from "5.entities/Country";
 import { ProfileCard } from "5.entities/Profile";
 import {
   DynamicModuleLoader,
   TReducersList,
 } from "6.shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { useAppDispatch } from "6.shared/lib/hooks";
-import { ECurrency } from "5.entities/Currency";
-import { ECountry } from "5.entities/Country";
-import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
+import { useAppDispatch, useInitialEffect } from "6.shared/lib/hooks";
 import { Text } from "6.shared/ui-kit/Text/Text";
-import { useTranslation } from "react-i18next";
+import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 
 const initialReducers: TReducersList = { profile: profileReducer };
 
@@ -44,11 +44,7 @@ const ProfilePage = () => {
     [EValidateProfileError.SERVER_ERROR]: t("Произошла ошибка на сервере"),
   };
 
-  useEffect(() => {
-    if (__PROJECT__ !== "storybook") {
-      dispatch(fetchProfileData());
-    }
-  }, [dispatch]);
+  useInitialEffect(() => dispatch(fetchProfileData()));
 
   const handleChangeFirstName = useCallback(
     (value?: string) => {
