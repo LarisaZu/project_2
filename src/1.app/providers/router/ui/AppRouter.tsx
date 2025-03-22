@@ -23,7 +23,7 @@ export const routeConfig: Record<AppRoute, TAppRouteProps> = {
     element: <AboutPage />,
   },
   [AppRoute.PROFILE]: {
-    path: routePath[AppRoute.PROFILE],
+    path: routePath[AppRoute.PROFILE] + ":profileId",
     element: <ProfilePage />,
     authOnly: true,
   },

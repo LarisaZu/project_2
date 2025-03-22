@@ -10,6 +10,23 @@ import {
   EArticleType,
   IArticle,
 } from "5.entities/Article/model/types/article";
+import { IArticleDetailsCommentsSchema } from "../model/types/articleDetailsCommentsSchema";
+
+const articleComments: IArticleDetailsCommentsSchema = {
+  ids: ["1", "2"],
+  entities: {
+    "1": {
+      id: "1",
+      text: "Комментарий 1",
+      user: { id: "1", username: "Вася" },
+    },
+    "2": {
+      id: "2",
+      text: "Комментарий 2",
+      user: { id: "2", username: "Петя" },
+    },
+  },
+};
 
 const article: IArticle = {
   id: "1",
@@ -93,6 +110,7 @@ const meta: MetaWithParameters = {
   parameters: {
     state: {
       articleDetails: { data: article, isLoading: false },
+      articleDetailsComments: articleComments,
     },
     router: { path: "/articles/:articleId", route: "/articles/1" },
   },

@@ -25,11 +25,19 @@ export const CommentsList = memo(function CommentList(
   let content = null;
 
   if (isLoading) {
-    content = <CommentCard isLoading />;
+    content = (
+      <>
+        <CommentCard isLoading />
+        <CommentCard isLoading />
+      </>
+    );
   } else if (data?.length) {
-    content = data.map((comment) => (
-      <CommentCard key={comment.id} data={comment} />
-    ));
+    content = data.map((comment) => {
+      if (!comment) {
+        return null;
+      }
+      return <CommentCard key={comment.id} data={comment} />;
+    });
   } else {
     content = <Text text={t("Комментариев нет")} />;
   }

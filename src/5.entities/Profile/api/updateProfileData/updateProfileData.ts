@@ -6,12 +6,12 @@ import { validateProfileData } from "../validateProfileData/validateProfileData"
 
 export const updateProfileData = createAsyncThunk<
   IProfile,
-  void,
+  string,
   IThunkConfig<EValidateProfileError[]>
 >(
   "profile/updateProfileData",
 
-  async (_, thunkAPI) => {
+  async (profileId, thunkAPI) => {
     const { rejectWithValue, extra, getState } = thunkAPI;
     try {
       const formData = getState().profile?.formData ?? {};
@@ -22,7 +22,10 @@ export const updateProfileData = createAsyncThunk<
         return rejectWithValue(errors);
       }
 
-      const response = await extra.api.put<IProfile>("/profile", formData);
+      const response = await extra.api.put<IProfile>(
+        `/profiles/${profileId}`,
+        formData
+      );
       if (!response.data) {
         throw Error("ошибка");
       }

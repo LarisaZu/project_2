@@ -11,7 +11,6 @@
       "userId": "2"
     }
   ],
-
   "articles": [
     {
       "id": "1",
@@ -94,13 +93,37 @@
       "id": "2",
       "text": "some comment 2",
       "articleId": "1",
-      "userId": "1"
+      "userId": "2"
     },
     {
-      "id": "3",
-      "text": "some comment 3",
+      "text": "123",
       "articleId": "1",
-      "userId": "2"
+      "userId": "2",
+      "id": "us6dnxr"
+    },
+    {
+      "text": "dd",
+      "articleId": "1",
+      "userId": "1",
+      "id": "yROJ4fN"
+    },
+    {
+      "text": "1234",
+      "articleId": "1",
+      "userId": "1",
+      "id": "1csjjQe"
+    },
+    {
+      "text": "dcdcd",
+      "articleId": "1",
+      "userId": "2",
+      "id": "ibzGTfW"
+    },
+    {
+      "text": "vfvfv",
+      "articleId": "1",
+      "userId": "2",
+      "id": "p1DAyDw"
     }
   ],
   "users": [
@@ -115,17 +138,32 @@
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://cs12.pikabu.ru/post_img/2021/05/08/12/1620504640126273687.jpg"
     }
   ],
-  "profile": {
-    "firstName": "Homer",
-    "lastName": "Simpson",
-    "age": 45,
-    "country": "USA",
-    "currency": "USD",
-    "city": "New York",
-    "username": "admin",
-    "avatar": "https://cdn1.ozone.ru/s3/multimedia-1/6463945753.jpg"
-  }
+  "profiles": [
+    {
+      "id": "1",
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "age": 45,
+      "country": "USA",
+      "currency": "USD",
+      "city": "New York",
+      "username": "admin",
+      "avatar": "https://cdn1.ozone.ru/s3/multimedia-1/6463945753.jpg"
+    },
+    {
+      "id": "2",
+      "firstName": "Петр 1",
+      "lastName": "Смирнов",
+      "age": 45,
+      "country": "Russia",
+      "currency": "USD",
+      "city": "Moscow",
+      "username": "user",
+      "avatar": "https://cs12.pikabu.ru/post_img/2021/05/08/12/1620504640126273687.jpg"
+    }
+  ]
 }

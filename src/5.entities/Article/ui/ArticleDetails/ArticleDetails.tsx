@@ -114,7 +114,7 @@ export const ArticleDetails = memo(function ArticleDetails(
           <Text text={String(data?.createdAt)} />
         </div>
 
-        <div className={cls.blocks}>{data?.blocks.map(renderBlock)}</div>
+        <div className={cls.blocks}>{data?.blocks?.map(renderBlock)}</div>
       </>
     );
   }

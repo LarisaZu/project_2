@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
@@ -35,6 +36,8 @@ const ProfilePage = () => {
   const readonly = useSelector(getProfileReadonly);
   const validateErrors = useSelector(getProfileValidateErrors);
 
+  const { profileId } = useParams<{ profileId: string }>();
+
   const { t } = useTranslation("profile");
 
   const validateErrorTranslates = {
@@ -44,7 +47,11 @@ const ProfilePage = () => {
     [EValidateProfileError.SERVER_ERROR]: t("Произошла ошибка на сервере"),
   };
 
-  useInitialEffect(() => dispatch(fetchProfileData()));
+  useInitialEffect(() => {
+    if (profileId) {
+      dispatch(fetchProfileData(profileId));
+    }
+  });
 
   const handleChangeFirstName = useCallback(
     (value?: string) => {

@@ -1,7 +1,8 @@
 import { Decorator, StoryFn, Parameters } from "@storybook/react/*";
 
 import { StoreProvider } from "1.app/providers/StoreProvider";
-import { loginFormReducer } from "4.features/AuthByUsername/model/slice/loginFormSlice";
+import { loginFormReducer } from "4.features/AuthByUsername";
+import { commentFormReducer } from "4.features/addNewComment";
 import { profileReducer } from "5.entities/Profile";
 import { articleDetailsReducer } from "5.entities/Article";
 import { TReducersList } from "6.shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
@@ -10,6 +11,8 @@ const defaultAsyncReducers: TReducersList = {
   loginForm: loginFormReducer,
   profile: profileReducer,
   articleDetails: articleDetailsReducer,
+  articleDetailsComments: articleDetailsReducer,
+  commentForm: commentFormReducer,
 };
 
 export const StoreDecorator: Decorator = (

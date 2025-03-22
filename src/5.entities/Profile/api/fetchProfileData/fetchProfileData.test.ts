@@ -4,6 +4,7 @@ import { ECurrency } from "../../../Currency";
 import { ECountry } from "../../../Country";
 
 const data = {
+  id: "1",
   firstName: "Homer",
   lastName: "Simpson",
   age: 45,
@@ -19,7 +20,7 @@ describe("fetchProfileData", () => {
     const thunk = new TestAsyncThunk(fetchProfileData);
     thunk.api.get.mockReturnValue(Promise.resolve({ data }));
 
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk("1");
 
     if (!result) {
       throw Error();
@@ -33,7 +34,7 @@ describe("fetchProfileData", () => {
   test("error", async () => {
     const thunk = new TestAsyncThunk(fetchProfileData);
     thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk("1");
 
     expect(thunk.api.get).toHaveBeenCalled();
     expect(result.meta.requestStatus).toBe("rejected");

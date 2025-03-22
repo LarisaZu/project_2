@@ -20,6 +20,7 @@ export enum EValidateProfileError {
 }
 
 export interface IProfileSchema {
+  id?: string;
   data?: IProfile;
   formData?: IProfile;
   isLoading: boolean;

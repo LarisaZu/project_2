@@ -10,6 +10,7 @@ import { NavigateFunction } from "react-router-dom";
 
 import { IArticleDetailsCommentsSchema } from "2.pages/ArticleDetailsPage";
 import { ILoginFormSchema } from "4.features/AuthByUsername";
+import { IAddCommentFormSchema } from "4.features/addNewComment";
 import { IUserSchema } from "5.entities/User";
 import { IProfileSchema } from "5.entities/Profile";
 import { IArticleDetailsSchema } from "5.entities/Article";
@@ -22,6 +23,7 @@ export interface IStateSchema {
   profile?: IProfileSchema;
   articleDetails?: IArticleDetailsSchema;
   articleDetailsComments?: IArticleDetailsCommentsSchema;
+  commentForm?: IAddCommentFormSchema;
 }
 
 export type TStateSchemaKeys = keyof IStateSchema;

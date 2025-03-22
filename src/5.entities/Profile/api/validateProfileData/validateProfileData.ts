@@ -1,7 +1,7 @@
 import { EValidateProfileError, IProfile } from "../../model/types/profile";
 
 export const validateProfileData = (profile: IProfile) => {
-  const { firstName, lastName, age, country } = profile;
+  const { firstName, lastName, country } = profile;
 
   const errors: EValidateProfileError[] = [];
 

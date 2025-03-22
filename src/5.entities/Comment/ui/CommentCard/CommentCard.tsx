@@ -7,6 +7,8 @@ import avatar from "6.shared/lib/assets/default_avatar.png";
 import { IComment } from "../../model/types/comment";
 import cls from "./CommentCard.module.scss";
 import { Skeleton } from "6.shared/ui-kit/Skeleton/Skeleton";
+import { AppLink } from "6.shared/ui-kit/AppLink/AppLink";
+import { AppRoute, routePath } from "6.shared/config/routeConfig/routeConfig";
 
 interface ICommentCardProps {
   className?: string;
@@ -29,13 +31,20 @@ export const CommentCard = memo(function CommentCard(props: ICommentCardProps) {
     );
   }
 
-  return (
-    <div className={classNames(cls.commentCard, [className])}>
-      <div className={cls.header}>
-        <Avatar src={data?.user?.avatar || avatar} size={30} />
-        <Text title={data?.user.username} />
+  if (data) {
+    return (
+      <div className={classNames(cls.commentCard, [className])}>
+        <AppLink
+          className={cls.header}
+          to={routePath[AppRoute.PROFILE] + data.user.id}
+        >
+          <Avatar src={data.user.avatar || avatar} size={30} />
+          <Text title={data.user.username} />
+        </AppLink>
+        <Text text={data.text} />
       </div>
-      <Text text={data?.text} />
-    </div>
-  );
+    );
+  }
+
+  return null;
 });
