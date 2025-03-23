@@ -1,13 +1,13 @@
 import { memo } from "react";
+import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
+import { getUserAuthState } from "5.entities/User";
 import { classNames } from "6.shared/lib";
 import { AppLink } from "6.shared/ui-kit/AppLink/AppLink";
 
-import { ISidebarItem } from "../../model/items";
+import { ISidebarItem } from "../../model/types/sidebar";
 import cls from "./SidebarItem.module.scss";
-import { useSelector } from "react-redux";
-import { getUserAuthState } from "5.entities/User";
 
 interface ISidebarItemProps {
   item: ISidebarItem;

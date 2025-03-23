@@ -1,12 +1,13 @@
-import { useState, memo } from "react";
+import { useState, memo, useMemo, useCallback } from "react";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { ThemeSwitcher } from "3.widgets/ThemeSwitcher";
 import { LangSwitcher } from "3.widgets/LangSwitcher";
 import { classNames } from "6.shared/lib";
 import { Button } from "6.shared/ui-kit/Button/Button";
 
-import { sidebarItemsList } from "../../model/items";
+import { getSidebarItems } from "../../model/selectors/getSidebarItems";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 
 import cls from "./Sidebar.module.scss";
@@ -22,13 +23,30 @@ export const Sidebar = memo(function Sidebar(props: ISidebarProps) {
 
   const location = useLocation();
 
-  const isLinkActive = (path: string) => {
-    return location.pathname === path;
-  };
+  const sidebarItemsList = useSelector(getSidebarItems);
+
+  const isLinkActive = useCallback(
+    (path: string) => {
+      return location.pathname === path;
+    },
+    [location.pathname]
+  );
 
   const handleCollapse = () => {
     setCollapsed((prev) => !prev);
   };
+
+  const sidebatItems = useMemo(
+    () =>
+      sidebarItemsList.map((item) => (
+        <SidebarItem
+          key={item.path}
+          collapsed={collapsed}
+          item={{ ...item, active: isLinkActive(item.path) }}
+        />
+      )),
+    [collapsed, isLinkActive, sidebarItemsList]
+  );
 
   return (
     <div
@@ -37,15 +55,7 @@ export const Sidebar = memo(function Sidebar(props: ISidebarProps) {
         [cls.collapsed]: collapsed,
       })}
     >
-      <div className={cls.items}>
-        {sidebarItemsList.map((item) => (
-          <SidebarItem
-            key={item.path}
-            collapsed={collapsed}
-            item={{ ...item, active: isLinkActive(item.path) }}
-          />
-        ))}
-      </div>
+      <div className={cls.items}>{sidebatItems}</div>
       <Button
         data-testid="sidebar-toggle"
         className={cls.collapsedBtn}
