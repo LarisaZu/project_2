@@ -48,7 +48,7 @@ export const ArticleDetails = memo(function ArticleDetails(
   const isLoading = useSelector(getArticleDetailsIsLoading);
   const error = useSelector(getArticleDetailsError);
 
-  const { t } = useTranslation("article_details");
+  const { t } = useTranslation(["article_details", "prompt"]);
 
   useInitialEffect(() => dispatch(fetchArticleById(id)));
 

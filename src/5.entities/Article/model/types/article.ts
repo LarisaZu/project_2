@@ -1,3 +1,5 @@
+import { IUser } from "5.entities/User";
+
 export interface IArticle {
   id: string;
   title: string;
@@ -6,6 +8,7 @@ export interface IArticle {
   views: number;
   createdAt: string;
   type: EArticleType[];
+  user: IUser;
   blocks: TArticleBlock[];
 }
 
@@ -46,4 +49,9 @@ export enum EArticleBlockType {
   TEXT = "TEXT",
   IMAGE = "IMAGE",
   CODE = "CODE",
+}
+
+export enum EArticleView {
+  BIG = "BIG",
+  SMALL = "SMALL",
 }

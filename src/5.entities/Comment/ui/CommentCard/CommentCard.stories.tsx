@@ -21,7 +21,7 @@ type MetaWithParameters = Meta<typeof CommentCard> & {
 };
 
 const meta: MetaWithParameters = {
-  title: "entities/CommentCard",
+  title: "entities/Comment/CommentCard",
   component: CommentCard,
   tags: ["autodocs"],
   args: { data },

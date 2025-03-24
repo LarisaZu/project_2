@@ -1,4 +1,4 @@
-export type { IArticle } from "./model/types/article";
+export { IArticle, EArticleView } from "./model/types/article";
 export type { IArticleDetailsSchema } from "./model/types/articleDetailsSchema";
 export {
   articleDetailsActions,
@@ -6,3 +6,4 @@ export {
 } from "./model/slice/articleDetailsSlice";
 
 export { ArticleDetails } from "./ui/ArticleDetails/ArticleDetails";
+export { ArticlesList } from "./ui/ArticlesList/ArticlesList";
