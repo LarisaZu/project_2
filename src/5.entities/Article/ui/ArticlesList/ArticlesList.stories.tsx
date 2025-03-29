@@ -3,7 +3,7 @@ import { IParameters } from "@config/storybook/preview";
 
 import { StoreDecorator } from "6.shared/config/storybook";
 import { EArticleView } from "../../model/types/article";
-import { arrayData } from "../../model/data/articlesFakeData";
+import { arrayData } from "../../mock/articlesMockData";
 import { ArticlesList } from "./ArticlesList";
 
 type MetaWithParameters = Meta<typeof ArticlesList> & {

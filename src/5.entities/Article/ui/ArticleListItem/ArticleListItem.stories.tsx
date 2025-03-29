@@ -5,7 +5,7 @@ import { StoreDecorator } from "6.shared/config/storybook";
 import { EArticleView } from "../../model/types/article";
 import { ArticleListItem } from "./ArticleListItem";
 import { THEME } from "6.shared/context/theme/ThemeContext";
-import { data } from "../../model/data/articlesFakeData";
+import { data } from "../../mock/articlesMockData";
 
 type MetaWithParameters = Meta<typeof ArticleListItem> & {
   parameters?: IParameters;

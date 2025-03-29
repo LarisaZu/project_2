@@ -6,6 +6,7 @@ import { commentFormReducer } from "4.features/addNewComment";
 import { profileReducer } from "5.entities/Profile";
 import { articleDetailsReducer } from "5.entities/Article";
 import { TReducersList } from "6.shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { articlesPageReducer } from "2.pages/ArticlesPage/model/slice/articlesPageSlice";
 
 const defaultAsyncReducers: TReducersList = {
   loginForm: loginFormReducer,
@@ -13,6 +14,7 @@ const defaultAsyncReducers: TReducersList = {
   articleDetails: articleDetailsReducer,
   articleDetailsComments: articleDetailsReducer,
   commentForm: commentFormReducer,
+  articlesPage: articlesPageReducer,
 };
 
 export const StoreDecorator: Decorator = (

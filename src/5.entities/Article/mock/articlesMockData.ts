@@ -1,4 +1,4 @@
-import { IArticle } from "../types/article";
+import { IArticle } from "../model/types/article";
 import image from "6.shared/lib/assets/image-placeholder.webp";
 
 export const data = {

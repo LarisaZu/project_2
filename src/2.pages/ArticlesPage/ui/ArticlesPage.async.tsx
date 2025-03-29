@@ -7,7 +7,7 @@ export const ArticlesPageAsync = lazy(
         () =>
           // @ts-expect-error: Unreachable code error
           resolve(import("./ArticlesPage")),
-        1500
+        300
       );
     })
 );

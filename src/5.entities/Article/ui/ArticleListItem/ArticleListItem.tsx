@@ -10,6 +10,7 @@ import { Card } from "6.shared/ui-kit/Card/Card";
 import { useHover } from "6.shared/lib/hooks";
 import { Avatar } from "6.shared/ui-kit/Avatar/Avatar";
 import { Button } from "6.shared/ui-kit/Button/Button";
+import imagePlaceholder from "6.shared/lib/assets/image-placeholder.webp";
 
 import {
   EArticleBlockType,
@@ -60,7 +61,11 @@ export const ArticleListItem = memo(function ArticleListItem(
       >
         <Card>
           <div className={cls["image-wrapper"]}>
-            <img alt={article.title} src={article.img} className={cls.image} />
+            <img
+              alt={article.title}
+              src={article.img || imagePlaceholder}
+              className={cls.image}
+            />
             {date}
           </div>
           <div className={cls["info-wrapper"]}>

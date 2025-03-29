@@ -14,6 +14,7 @@ import { IAddCommentFormSchema } from "4.features/addNewComment";
 import { IUserSchema } from "5.entities/User";
 import { IProfileSchema } from "5.entities/Profile";
 import { IArticleDetailsSchema } from "5.entities/Article";
+import { IArticlesPageSchema } from "2.pages/ArticlesPage";
 
 export interface IStateSchema {
   user: IUserSchema;
@@ -24,6 +25,7 @@ export interface IStateSchema {
   articleDetails?: IArticleDetailsSchema;
   articleDetailsComments?: IArticleDetailsCommentsSchema;
   commentForm?: IAddCommentFormSchema;
+  articlesPage?: IArticlesPageSchema;
 }
 
 export type TStateSchemaKeys = keyof IStateSchema;

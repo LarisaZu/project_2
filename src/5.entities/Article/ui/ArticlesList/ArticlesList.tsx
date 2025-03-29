@@ -34,13 +34,17 @@ export const ArticlesList = memo(function ArticlesList(
     );
   }
 
-  const renderArticleItem = (article: IArticle) => (
-    <ArticleListItem key={article.id} view={view} article={article} />
-  );
+  if (articles?.length) {
+    const renderArticleItem = (article: IArticle) => (
+      <ArticleListItem key={article.id} view={view} article={article} />
+    );
 
-  return (
-    <div className={classNames(cls.articlesList, [className, cls[view]])}>
-      {articles.length > 0 ? articles.map(renderArticleItem) : null}
-    </div>
-  );
+    return (
+      <div className={classNames(cls.articlesList, [className, cls[view]])}>
+        {articles.length > 0 ? articles.map(renderArticleItem) : null}
+      </div>
+    );
+  }
+
+  return null;
 });
