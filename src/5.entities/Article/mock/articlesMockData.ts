@@ -1,5 +1,5 @@
 import { IArticle } from "../model/types/article";
-import image from "6.shared/lib/assets/image-placeholder.webp";
+import image from "6.shared/lib/assets/image_placeholder.webp";
 
 export const data = {
   id: "1",
