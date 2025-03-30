@@ -10,6 +10,7 @@ import {
   DynamicModuleLoader,
   TReducersList,
 } from "6.shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { Page } from "6.shared/ui-kit/Page/Page";
 import { fetchArticles } from "../model/api/fetchArticles/fetchArticles";
 import {
   articlesPageActions,
@@ -21,6 +22,7 @@ import {
   getArticlesPageIsLoading,
   getArticlesPageView,
 } from "../model/selectors/articlesPageSelectors";
+import { fetchNextArticlesPage } from "../model/api/fetchNextArticlesPage/fetchNextArticlesPage";
 import cls from "./ArticlesPage.module.scss";
 
 const reducers: TReducersList = {
@@ -37,9 +39,13 @@ const ArticlesPage = () => {
   const { t } = useTranslation("articles");
 
   useInitialEffect(() => {
-    dispatch(fetchArticles());
     dispatch(articlesPageActions.initState());
+    dispatch(fetchArticles({ page: 1 }));
   });
+
+  const handleLoadNextPart = useCallback(() => {
+    dispatch(fetchNextArticlesPage());
+  }, [dispatch]);
 
   const handleViewChange = useCallback(
     (view: EArticleView) => {
@@ -54,7 +60,7 @@ const ArticlesPage = () => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className="">
+      <Page onScrollEnd={handleLoadNextPart}>
         <Text title={t("Статьи")} />
 
         <div className={cls.view}>
@@ -63,7 +69,7 @@ const ArticlesPage = () => {
         </div>
 
         <ArticlesList isLoading={isLoading} articles={articles} view={view} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

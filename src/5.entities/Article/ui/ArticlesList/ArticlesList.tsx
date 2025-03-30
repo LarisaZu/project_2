@@ -24,27 +24,20 @@ export const ArticlesList = memo(function ArticlesList(
 ) {
   const { className, view = EArticleView.SMALL, articles, isLoading } = props;
 
-  if (isLoading) {
-    return (
-      <div className={classNames(cls.articlesList, [className, cls[view]])}>
-        {getSkeletonData(view).map((el) => (
-          <ArticleListItemSkeleton key={el.id} view={view} />
-        ))}
-      </div>
-    );
-  }
+  const renderArticleItem = (article: IArticle) => (
+    <ArticleListItem key={article.id} view={view} article={article} />
+  );
 
-  if (articles?.length) {
-    const renderArticleItem = (article: IArticle) => (
-      <ArticleListItem key={article.id} view={view} article={article} />
-    );
-
-    return (
-      <div className={classNames(cls.articlesList, [className, cls[view]])}>
-        {articles.length > 0 ? articles.map(renderArticleItem) : null}
-      </div>
-    );
-  }
-
-  return null;
+  return (
+    <div className={classNames(cls.articlesList, [className, cls[view]])}>
+      {articles?.length > 0 ? articles.map(renderArticleItem) : null}
+      {isLoading && (
+        <>
+          {getSkeletonData(view).map((el) => (
+            <ArticleListItemSkeleton key={el.id} view={view} />
+          ))}
+        </>
+      )}
+    </div>
+  );
 });

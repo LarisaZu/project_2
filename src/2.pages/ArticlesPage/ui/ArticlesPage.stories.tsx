@@ -23,6 +23,8 @@ const meta: MetaWithParameters = {
         entities: articles,
         isLoading: false,
         view: EArticleView.SMALL,
+        page: 1,
+        hasMore: true,
       },
     },
   },

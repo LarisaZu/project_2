@@ -53,7 +53,7 @@ const config = {
   // transformIgnorePatterns: ["/node_modules/", "\\.pnp\\.[^\\/]+$"],
   moduleNameMapper: {
     "\\.s?css$": "identity-obj-proxy",
-    "\\.svg$": "<rootDir>config/jest/jestEmptyFile.tsx",
+    "\\.(svg|png)$": "<rootDir>config/jest/jestEmptyFile.tsx",
     axios: "axios/dist/node/axios.cjs",
   },
 
