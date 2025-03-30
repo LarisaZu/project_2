@@ -23,6 +23,7 @@ import {
 } from "6.shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch, useInitialEffect } from "6.shared/lib/hooks";
 import { Text } from "6.shared/ui-kit/Text/Text";
+import { Page } from "6.shared/ui-kit/Page/Page";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 
 const initialReducers: TReducersList = { profile: profileReducer };
@@ -111,25 +112,31 @@ const ProfilePage = () => {
 
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
-      <ProfilePageHeader readonly={readonly} />
-      {validateErrors?.length &&
-        validateErrors.map((err) => (
-          <Text key={err} variant="error" text={validateErrorTranslates[err]} />
-        ))}
-      <ProfileCard
-        data={data}
-        error={error}
-        readonly={readonly}
-        isLoading={isLoading}
-        onChangeFirstName={handleChangeFirstName}
-        onChangeLastName={handleChangeLastName}
-        onChangeAge={handleChangeAge}
-        onChangeCity={handleChangeCity}
-        onChangeUsername={handleChangeUsername}
-        onChangeAvatar={handleChangeAvatar}
-        onChangeCurrency={handleChangeCurrency}
-        onChangeCountry={handleChangeCountry}
-      />
+      <Page>
+        <ProfilePageHeader readonly={readonly} />
+        {validateErrors?.length &&
+          validateErrors.map((err) => (
+            <Text
+              key={err}
+              variant="error"
+              text={validateErrorTranslates[err]}
+            />
+          ))}
+        <ProfileCard
+          data={data}
+          error={error}
+          readonly={readonly}
+          isLoading={isLoading}
+          onChangeFirstName={handleChangeFirstName}
+          onChangeLastName={handleChangeLastName}
+          onChangeAge={handleChangeAge}
+          onChangeCity={handleChangeCity}
+          onChangeUsername={handleChangeUsername}
+          onChangeAvatar={handleChangeAvatar}
+          onChangeCurrency={handleChangeCurrency}
+          onChangeCountry={handleChangeCountry}
+        />
+      </Page>
     </DynamicModuleLoader>
   );
 };

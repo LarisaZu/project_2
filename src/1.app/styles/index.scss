@@ -21,11 +21,3 @@ body > iframe {
 .content-wrapper {
   display: flex;
 }
-
-.page-wrapper {
-  width: 100%;
-  height: calc(100vh - var(--navbar-height));
-  overflow: auto;
-  flex-grow: 1;
-  padding: 20px 20px 20px 45px;
-}

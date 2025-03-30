@@ -11,7 +11,6 @@ import { useHover } from "6.shared/lib/hooks";
 import { Avatar } from "6.shared/ui-kit/Avatar/Avatar";
 import { Button } from "6.shared/ui-kit/Button/Button";
 import imagePlaceholder from "6.shared/lib/assets/image_placeholder.webp";
-console.log("🚀 ~ imagePlaceholder:", imagePlaceholder);
 
 import {
   EArticleBlockType,
@@ -94,7 +93,11 @@ export const ArticleListItem = memo(function ArticleListItem(
         <div className={cls.content}>
           {title}
           {types}
-          <img src={article.img} alt={article.title} className={cls.image} />
+          <img
+            src={article.img || imagePlaceholder}
+            alt={article.title}
+            className={cls.image}
+          />
           {textBlock && (
             <ArticleTextBlock block={textBlock} className={cls.block} />
           )}

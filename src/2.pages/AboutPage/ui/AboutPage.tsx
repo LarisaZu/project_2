@@ -1,9 +1,11 @@
 import { useTranslation } from "react-i18next";
 
+import { Page } from "6.shared/ui-kit/Page/Page";
+
 const AboutPage = () => {
   const { t } = useTranslation("about");
 
-  return <div>{t("О сайте")}</div>;
+  return <Page>{t("О сайте")}</Page>;
 };
 
 export default AboutPage;

@@ -15,6 +15,7 @@ import {
 import { Button } from "6.shared/ui-kit/Button/Button";
 import { AppRoute, routePath } from "6.shared/config/routeConfig/routeConfig";
 import { useAppDispatch, useInitialEffect } from "6.shared/lib/hooks";
+import { Page } from "6.shared/ui-kit/Page/Page";
 import { getArticleCommentsIsLoading } from "../model/selectors/comments";
 import { fetchCommentsByArticleId } from "../model/api/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import {
@@ -80,9 +81,9 @@ const ArticleDetailsPage = memo(function ArticleDetailsPage(
   }
 
   return (
-    <div className={classNames(cls.articleDetailsPage, [className])}>
+    <Page className={classNames(cls.articleDetailsPage, [className])}>
       {content}
-    </div>
+    </Page>
   );
 });
 
