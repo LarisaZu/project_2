@@ -11,7 +11,6 @@ import {
   TReducersList,
 } from "6.shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { Page } from "6.shared/ui-kit/Page/Page";
-import { fetchArticles } from "../model/api/fetchArticles/fetchArticles";
 import {
   articlesPageActions,
   articlesPageReducer,
@@ -23,6 +22,7 @@ import {
   getArticlesPageView,
 } from "../model/selectors/articlesPageSelectors";
 import { fetchNextArticlesPage } from "../model/api/fetchNextArticlesPage/fetchNextArticlesPage";
+import { initArticlesPage } from "../model/api/initArticlesPage/initArticlesPage";
 import cls from "./ArticlesPage.module.scss";
 
 const reducers: TReducersList = {
@@ -39,8 +39,7 @@ const ArticlesPage = () => {
   const { t } = useTranslation("articles");
 
   useInitialEffect(() => {
-    dispatch(articlesPageActions.initState());
-    dispatch(fetchArticles({ page: 1 }));
+    dispatch(initArticlesPage());
   });
 
   const handleLoadNextPart = useCallback(() => {
@@ -59,7 +58,7 @@ const ArticlesPage = () => {
   //   .map((art, idx) => ({ ...data, id: String(idx) }));
 
   return (
-    <DynamicModuleLoader reducers={reducers}>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page onScrollEnd={handleLoadNextPart}>
         <Text title={t("Статьи")} />
 

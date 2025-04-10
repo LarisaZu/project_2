@@ -25,6 +25,7 @@ const meta: MetaWithParameters = {
         view: EArticleView.SMALL,
         page: 1,
         hasMore: true,
+        _inited: false,
       },
     },
   },

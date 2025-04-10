@@ -6,7 +6,6 @@ import {
   ReducersMapObject,
 } from "@reduxjs/toolkit";
 import { AxiosInstance } from "axios";
-import { NavigateFunction } from "react-router-dom";
 
 import { IArticleDetailsCommentsSchema } from "2.pages/ArticleDetailsPage";
 import { ILoginFormSchema } from "4.features/AuthByUsername";
@@ -46,7 +45,6 @@ export interface ReduxStoreWithManager extends ToolkitStore<IStateSchema> {
 
 export interface IThunkExtraArg {
   api: AxiosInstance;
-  navigate?: NavigateFunction;
 }
 
 export interface IThunkConfig<T> {

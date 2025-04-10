@@ -21,7 +21,7 @@ export function useInfiniteScroll({
 
     const options = {
       root: wrapper,
-      rootMargin: "0px",
+      rootMargin: "1px",
       threshold: 1.0,
     };
 

@@ -4,7 +4,6 @@ import {
   Reducer,
   ReducersMapObject,
 } from "@reduxjs/toolkit";
-import { NavigateFunction } from "react-router-dom";
 
 import { userReducer } from "5.entities/User";
 import { $api } from "6.shared/api/api";
@@ -16,8 +15,7 @@ export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
 
 export const createReduxStore = (
   initialState: IStateSchema,
-  asyncReducers?: ReducersMapObject<IStateSchema>,
-  navigate?: NavigateFunction
+  asyncReducers?: ReducersMapObject<IStateSchema>
 ) => {
   const rootReducers: ReducersMapObject<IStateSchema> = {
     ...asyncReducers,
@@ -33,7 +31,7 @@ export const createReduxStore = (
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         thunk: {
-          extraArgument: { api: $api, navigate },
+          extraArgument: { api: $api },
         },
       }),
   });
