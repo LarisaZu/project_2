@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+import { Page } from "3.widgets/Page/Page";
 import { AddCommentForm } from "4.features/addNewComment";
 import { ArticleDetails } from "5.entities/Article";
 import { CommentsList } from "5.entities/Comment";
@@ -15,7 +16,6 @@ import {
 import { Button } from "6.shared/ui-kit/Button/Button";
 import { AppRoute, routePath } from "6.shared/config/routeConfig/routeConfig";
 import { useAppDispatch, useInitialEffect } from "6.shared/lib/hooks";
-import { Page } from "6.shared/ui-kit/Page/Page";
 import { getArticleCommentsIsLoading } from "../model/selectors/comments";
 import { fetchCommentsByArticleId } from "../model/api/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import {

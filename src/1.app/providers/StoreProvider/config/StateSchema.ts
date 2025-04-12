@@ -7,16 +7,18 @@ import {
 } from "@reduxjs/toolkit";
 import { AxiosInstance } from "axios";
 
+import { IArticlesPageSchema } from "2.pages/ArticlesPage";
 import { IArticleDetailsCommentsSchema } from "2.pages/ArticleDetailsPage";
 import { ILoginFormSchema } from "4.features/AuthByUsername";
 import { IAddCommentFormSchema } from "4.features/addNewComment";
+import { TScrollSchema } from "4.features/scrollSave";
 import { IUserSchema } from "5.entities/User";
 import { IProfileSchema } from "5.entities/Profile";
 import { IArticleDetailsSchema } from "5.entities/Article";
-import { IArticlesPageSchema } from "2.pages/ArticlesPage";
 
 export interface IStateSchema {
   user: IUserSchema;
+  scroll: TScrollSchema;
 
   // Асинхронные редюсеры
   loginForm?: ILoginFormSchema;

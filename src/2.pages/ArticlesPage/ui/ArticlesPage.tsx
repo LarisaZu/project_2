@@ -2,6 +2,7 @@ import { memo, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
+import { Page } from "3.widgets/Page/Page";
 import { ViewToggle } from "4.features/viewToggle";
 import { ArticlesList, EArticleView } from "5.entities/Article";
 import { Text } from "6.shared/ui-kit/Text/Text";
@@ -10,7 +11,6 @@ import {
   DynamicModuleLoader,
   TReducersList,
 } from "6.shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { Page } from "6.shared/ui-kit/Page/Page";
 import {
   articlesPageActions,
   articlesPageReducer,

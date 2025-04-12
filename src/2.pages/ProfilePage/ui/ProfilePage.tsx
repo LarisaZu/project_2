@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
+import { Page } from "3.widgets/Page/Page";
 import {
   EValidateProfileError,
   fetchProfileData,
@@ -23,7 +24,6 @@ import {
 } from "6.shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch, useInitialEffect } from "6.shared/lib/hooks";
 import { Text } from "6.shared/ui-kit/Text/Text";
-import { Page } from "6.shared/ui-kit/Page/Page";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 
 const initialReducers: TReducersList = { profile: profileReducer };
