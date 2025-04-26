@@ -40,6 +40,7 @@ export type TArticleBlock =
   | IArticleImageBlock;
 
 export enum EArticleType {
+  ALL = "ALL",
   IT = "IT",
   ECONOMICS = "ECONOMICS",
   SCIENCE = "SCIENCE",
@@ -54,4 +55,10 @@ export enum EArticleBlockType {
 export enum EArticleView {
   BIG = "BIG",
   SMALL = "SMALL",
+}
+
+export enum EArticleSortField {
+  VIEWS = "views",
+  TITLE = "title",
+  CREATED = "createdAt",
 }

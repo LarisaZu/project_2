@@ -1,18 +1,18 @@
 import React, { memo, MutableRefObject, ReactNode, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
+import { IStateSchema } from "1.app/providers/StoreProvider";
+import { getScrollByPath, scrollSaveActions } from "4.features/scrollSave";
 import { useInfiniteScroll } from "6.shared/lib/hooks/useInfiniteScroll/useInfiniteScroll";
 import { classNames } from "6.shared/lib";
 
-import cls from "./Page.module.scss";
 import {
   useAppDispatch,
   useInitialEffect,
   useThrottle,
 } from "6.shared/lib/hooks";
-import { getScrollByPath, scrollSaveActions } from "4.features/scrollSave";
-import { IStateSchema } from "1.app/providers/StoreProvider";
-import { useSelector } from "react-redux";
+import cls from "./Page.module.scss";
 
 interface IPageProps {
   className?: string;
@@ -60,7 +60,7 @@ export const Page = memo(function Page(props: IPageProps) {
       onScroll={handleScroll}
     >
       {children}
-      <div ref={targetRef} />
+      {onScrollEnd && <div className={cls.trigger} ref={targetRef} />}
     </section>
   );
 });

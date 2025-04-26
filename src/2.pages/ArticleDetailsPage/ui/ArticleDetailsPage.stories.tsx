@@ -1,15 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { IParameters } from "@config/storybook/preview";
 
+import { EArticleBlockType, EArticleType, IArticle } from "5.entities/Article";
 import { THEME } from "6.shared/context/theme/ThemeContext";
 import { StoreDecorator } from "6.shared/config/storybook";
 
 import ArticleDetailsPage from "./ArticleDetailsPage";
-import {
-  EArticleBlockType,
-  EArticleType,
-  IArticle,
-} from "5.entities/Article/model/types/article";
 import { IArticleDetailsCommentsSchema } from "../model/types/articleDetailsCommentsSchema";
 
 const articleComments: IArticleDetailsCommentsSchema = {

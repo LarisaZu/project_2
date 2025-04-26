@@ -17,14 +17,14 @@ export const fetchNextArticlesPage = createAsyncThunk<
   "articlesPage/fetchNextArticlesPage",
 
   async (_, thunkAPI) => {
-    const { rejectWithValue, extra, getState, dispatch } = thunkAPI;
+    const { rejectWithValue, getState, dispatch } = thunkAPI;
     const page = getArticlesPageNum(getState());
     const hasMore = getArticlesPageHasMore(getState());
     const isLoading = getArticlesPageIsLoading(getState());
     try {
       if (hasMore && !isLoading) {
         dispatch(articlesPageActions.setPage(page + 1));
-        dispatch(fetchArticles({ page: page + 1 }));
+        dispatch(fetchArticles({}));
       }
     } catch (error) {
       return rejectWithValue("ошибка получения списка статей");

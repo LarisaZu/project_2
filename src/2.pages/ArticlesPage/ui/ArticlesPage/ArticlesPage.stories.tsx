@@ -4,8 +4,12 @@ import { IParameters } from "@config/storybook/preview";
 import { THEME } from "6.shared/context/theme/ThemeContext";
 import { StoreDecorator } from "6.shared/config/storybook";
 import articles from "6.shared/helpers/mock/articlesList.json";
+import {
+  EArticleView,
+  EArticleSortField,
+  EArticleType,
+} from "5.entities/Article";
 import ArticlesPage from "./ArticlesPage";
-import { EArticleView } from "5.entities/Article";
 
 type MetaWithParameters = Meta<typeof ArticlesPage> & {
   parameters?: IParameters;
@@ -26,6 +30,11 @@ const meta: MetaWithParameters = {
         page: 1,
         hasMore: true,
         _inited: false,
+        limit: 9,
+        sort: EArticleSortField.CREATED,
+        search: "",
+        order: "asc",
+        type: EArticleType.ALL,
       },
     },
   },

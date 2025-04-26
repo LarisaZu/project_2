@@ -1,3 +1,15 @@
 {
-  "Статьи": "Articles"
+  "Статьи": "Articles",
+  "Сортировать ПО": "Sort BY",
+  "по": "by",
+  "Возрастанию": "ascending",
+  "Убыванию": "descending",
+  "Просмотрам": "views",
+  "Названию": "title",
+  "Дате создания": " date of creation",
+  "ИТ": "IT",
+  "Все": "All",
+  "Экономика": "Economics",
+  "Наука": "Science",
+  "Статьи не найдены": "Articles not found"
 }
