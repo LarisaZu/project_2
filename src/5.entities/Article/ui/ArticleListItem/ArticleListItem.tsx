@@ -1,5 +1,4 @@
-import React, { memo, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { HTMLAttributeAnchorTarget, memo } from "react";
 import { useTranslation } from "react-i18next";
 
 import { classNames } from "6.shared/lib";
@@ -21,19 +20,21 @@ import {
 import { ArticleTextBlock } from "../ArticleTextBlock/ArticleTextBlock";
 
 import cls from "./ArticleListItem.module.scss";
+import { AppLink } from "6.shared/ui-kit/AppLink/AppLink";
+import { AppRoute, routePath } from "6.shared/config/routeConfig/routeConfig";
 
 interface IArticleListItemProps {
   className?: string;
   view?: EArticleView;
   article: IArticle;
+  target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleListItem = memo(function ArticleListItem(
   props: IArticleListItemProps
 ) {
-  const { className, article, view = EArticleView.SMALL } = props;
+  const { className, article, view = EArticleView.SMALL, target } = props;
 
-  const navigate = useNavigate();
   const { t } = useTranslation(["prompt"]);
 
   const [isHover, bindHover] = useHover();
@@ -48,16 +49,13 @@ export const ArticleListItem = memo(function ArticleListItem(
     </>
   );
 
-  const handleOpenArticle = useCallback(() => {
-    navigate(article.id);
-  }, [article.id, navigate]);
-
   if (view === EArticleView.SMALL) {
     return (
-      <div
+      <AppLink
         {...bindHover}
+        to={routePath[AppRoute.ARTICLE_DETAILS] + article.id}
+        target={target}
         className={classNames(cls.articleItem, [className, cls[view]])}
-        onClick={handleOpenArticle}
       >
         <Card>
           <div className={cls["image-wrapper"]}>
@@ -70,7 +68,7 @@ export const ArticleListItem = memo(function ArticleListItem(
           </div>
           {title}
         </Card>
-      </div>
+      </AppLink>
     );
   }
 
@@ -103,7 +101,13 @@ export const ArticleListItem = memo(function ArticleListItem(
           )}
         </div>
         <div className={cls.footer}>
-          <Button onClick={handleOpenArticle}>{t("Читать далее...")}</Button>
+          <AppLink
+            to={routePath[AppRoute.ARTICLE_DETAILS] + article.id}
+            target={target}
+          >
+            <Button>{t("Читать далее...")}</Button>
+          </AppLink>
+
           {views}
         </div>
       </Card>

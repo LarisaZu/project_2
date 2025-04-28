@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { Page } from "3.widgets/Page/Page";
 import { AddCommentForm } from "4.features/addNewComment";
-import { ArticleDetails } from "5.entities/Article";
+import { ArticleDetails, ArticlesList } from "5.entities/Article";
 import { CommentsList } from "5.entities/Comment";
 import { Text } from "6.shared/ui-kit/Text/Text";
 import { classNames } from "6.shared/lib";
@@ -18,11 +18,13 @@ import { AppRoute, routePath } from "6.shared/config/routeConfig/routeConfig";
 import { useAppDispatch, useInitialEffect } from "6.shared/lib/hooks";
 import { getArticleCommentsIsLoading } from "../model/selectors/comments";
 import { fetchCommentsByArticleId } from "../model/api/fetchCommentsByArticleId/fetchCommentsByArticleId";
-import {
-  articleDetailsCommentsReducer,
-  getArticlesComments,
-} from "../model/slice/articleDetailsCommentsSlice";
+import { getArticlesComments } from "../model/slice/articleDetailsCommentsSlice";
+import { getArticlesRecommendations } from "../model/slice/articleDetailsRecommendationsSlice";
 import { sendCommentsByArticleId } from "../model/api/sendCommentsByArticleId/sendCommentsByArticleId";
+import { getArticleRecommendationsIsLoading } from "../model/selectors/recommendations";
+import { fetchArticleRecommendations } from "../model/api/fetchArticleRecommendations/fetchArticleRecommendations";
+import { articleDetailsPageReducer } from "../model/slice";
+
 import cls from "./ArticleDetailsPage.module.scss";
 
 interface IArticleDetailsPageProps {
@@ -30,7 +32,7 @@ interface IArticleDetailsPageProps {
 }
 
 const reducers: TReducersList = {
-  articleDetailsComments: articleDetailsCommentsReducer,
+  articleDetailsPage: articleDetailsPageReducer,
 };
 
 const ArticleDetailsPage = memo(function ArticleDetailsPage(
@@ -41,11 +43,18 @@ const ArticleDetailsPage = memo(function ArticleDetailsPage(
   const dispatch = useAppDispatch();
   const comments = useSelector(getArticlesComments.selectAll);
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
+  const recommendations = useSelector(getArticlesRecommendations.selectAll);
+  const recommendationsIsLoading = useSelector(
+    getArticleRecommendationsIsLoading
+  );
   const navigate = useNavigate();
 
-  const { t } = useTranslation("article_details");
+  const { t } = useTranslation(["article_details", "prompt"]);
 
-  useInitialEffect(() => dispatch(fetchCommentsByArticleId(articleId)));
+  useInitialEffect(() => {
+    dispatch(fetchCommentsByArticleId(articleId));
+    dispatch(fetchArticleRecommendations());
+  });
 
   const handleCommentSubmit = useCallback(
     (text) => {
@@ -72,6 +81,15 @@ const ArticleDetailsPage = memo(function ArticleDetailsPage(
         </Button>
         <div className={cls.wrapper}>
           <ArticleDetails id={articleId} />
+
+          <Text title={t("Рекомендации")} />
+          <ArticlesList
+            className={cls.recommendations}
+            articles={recommendations}
+            isLoading={recommendationsIsLoading}
+            target="_blank"
+          />
+
           <Text title={t("Комментарии")} />
           <AddCommentForm onSendComment={handleCommentSubmit} />
           <CommentsList isLoading={commentsIsLoading} data={comments} />

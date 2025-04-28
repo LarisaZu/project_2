@@ -7,12 +7,13 @@ import { profileReducer } from "5.entities/Profile";
 import { articleDetailsReducer } from "5.entities/Article";
 import { TReducersList } from "6.shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { articlesPageReducer } from "2.pages/ArticlesPage/model/slice/articlesPageSlice";
+import { articleDetailsPageReducer } from "2.pages/ArticleDetailsPage/model/slice";
 
 const defaultAsyncReducers: TReducersList = {
   loginForm: loginFormReducer,
   profile: profileReducer,
   articleDetails: articleDetailsReducer,
-  articleDetailsComments: articleDetailsReducer,
+  articleDetailsPage: articleDetailsPageReducer,
   commentForm: commentFormReducer,
   articlesPage: articlesPageReducer,
 };

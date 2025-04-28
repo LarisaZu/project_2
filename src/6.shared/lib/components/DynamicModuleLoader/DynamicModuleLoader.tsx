@@ -2,11 +2,14 @@ import { FC, ReactNode, useEffect } from "react";
 import { useDispatch, useStore } from "react-redux";
 
 import { ReduxStoreWithManager } from "1.app/providers/StoreProvider";
-import { TStateSchemaKeys } from "1.app/providers/StoreProvider/config/StateSchema";
+import {
+  IStateSchema,
+  TStateSchemaKeys,
+} from "1.app/providers/StoreProvider/config/StateSchema";
 import { Reducer } from "@reduxjs/toolkit";
 
 export type TReducersList = {
-  [name in TStateSchemaKeys]?: Reducer;
+  [name in TStateSchemaKeys]?: Reducer<NonNullable<IStateSchema[name]>>;
 };
 
 interface IDynamicModuleLoaderProps {

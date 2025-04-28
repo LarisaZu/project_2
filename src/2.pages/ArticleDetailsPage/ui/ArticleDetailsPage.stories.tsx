@@ -107,7 +107,15 @@ const meta: MetaWithParameters = {
   parameters: {
     state: {
       articleDetails: { data: article, isLoading: false },
-      articleDetailsComments: articleComments,
+      articleDetailsPage: {
+        comments: articleComments,
+        recommendations: {
+          ids: ["1"],
+          entities: {
+            "1": article,
+          },
+        },
+      },
     },
     router: { path: "/articles/:articleId", route: "/articles/1" },
   },

@@ -8,7 +8,7 @@ import {
 import { AxiosInstance } from "axios";
 
 import { IArticlesPageSchema } from "2.pages/ArticlesPage";
-import { IArticleDetailsCommentsSchema } from "2.pages/ArticleDetailsPage";
+import { IArticleDetailsPageSchema } from "2.pages/ArticleDetailsPage";
 import { ILoginFormSchema } from "4.features/AuthByUsername";
 import { IAddCommentFormSchema } from "4.features/addNewComment";
 import { TScrollSchema } from "4.features/scrollSave";
@@ -24,7 +24,7 @@ export interface IStateSchema {
   loginForm?: ILoginFormSchema;
   profile?: IProfileSchema;
   articleDetails?: IArticleDetailsSchema;
-  articleDetailsComments?: IArticleDetailsCommentsSchema;
+  articleDetailsPage?: IArticleDetailsPageSchema;
   commentForm?: IAddCommentFormSchema;
   articlesPage?: IArticlesPageSchema;
 }
