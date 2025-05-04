@@ -1,5 +1,6 @@
 .navbar {
   display: flex;
+  align-items: center;
   width: 100%;
   height: var(--navbar-height);
   background-color: var(--inverted-bg-color);
@@ -15,4 +16,9 @@
 
 .auth-button {
   margin-left: auto;
+}
+
+.logo {
+  width: var(--sidebar-width);
+  padding-left: 30px;
 }

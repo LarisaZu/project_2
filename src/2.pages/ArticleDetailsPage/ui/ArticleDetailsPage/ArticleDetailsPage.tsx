@@ -13,17 +13,16 @@ import {
   DynamicModuleLoader,
   TReducersList,
 } from "6.shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { Button } from "6.shared/ui-kit/Button/Button";
-import { AppRoute, routePath } from "6.shared/config/routeConfig/routeConfig";
 import { useAppDispatch, useInitialEffect } from "6.shared/lib/hooks";
-import { getArticleCommentsIsLoading } from "../model/selectors/comments";
-import { fetchCommentsByArticleId } from "../model/api/fetchCommentsByArticleId/fetchCommentsByArticleId";
-import { getArticlesComments } from "../model/slice/articleDetailsCommentsSlice";
-import { getArticlesRecommendations } from "../model/slice/articleDetailsRecommendationsSlice";
-import { sendCommentsByArticleId } from "../model/api/sendCommentsByArticleId/sendCommentsByArticleId";
-import { getArticleRecommendationsIsLoading } from "../model/selectors/recommendations";
-import { fetchArticleRecommendations } from "../model/api/fetchArticleRecommendations/fetchArticleRecommendations";
-import { articleDetailsPageReducer } from "../model/slice";
+import { getArticleCommentsIsLoading } from "../../model/selectors/comments";
+import { fetchCommentsByArticleId } from "../../model/api/fetchCommentsByArticleId/fetchCommentsByArticleId";
+import { getArticlesComments } from "../../model/slice/articleDetailsCommentsSlice";
+import { getArticlesRecommendations } from "../../model/slice/articleDetailsRecommendationsSlice";
+import { sendCommentsByArticleId } from "../../model/api/sendCommentsByArticleId/sendCommentsByArticleId";
+import { getArticleRecommendationsIsLoading } from "../../model/selectors/recommendations";
+import { fetchArticleRecommendations } from "../../model/api/fetchArticleRecommendations/fetchArticleRecommendations";
+import { articleDetailsPageReducer } from "../../model/slice";
+import { ArticleDetailsPageHeader } from "../ArticleDetailsPageHeader/ArticleDetailsPageHeader";
 
 import cls from "./ArticleDetailsPage.module.scss";
 
@@ -47,7 +46,6 @@ const ArticleDetailsPage = memo(function ArticleDetailsPage(
   const recommendationsIsLoading = useSelector(
     getArticleRecommendationsIsLoading
   );
-  const navigate = useNavigate();
 
   const { t } = useTranslation(["article_details", "prompt"]);
 
@@ -65,10 +63,6 @@ const ArticleDetailsPage = memo(function ArticleDetailsPage(
     [dispatch, articleId]
   );
 
-  const handleBackToList = useCallback(() => {
-    navigate(routePath[AppRoute.ARTICLES]);
-  }, [navigate]);
-
   let content;
 
   if (!articleId) {
@@ -76,9 +70,7 @@ const ArticleDetailsPage = memo(function ArticleDetailsPage(
   } else {
     content = (
       <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-        <Button onClick={handleBackToList}>
-          {t("Назад к списку", { ns: "prompt" })}
-        </Button>
+        <ArticleDetailsPageHeader />
         <div className={cls.wrapper}>
           <ArticleDetails id={articleId} />
 

@@ -6,7 +6,7 @@ import { THEME } from "6.shared/context/theme/ThemeContext";
 import { StoreDecorator } from "6.shared/config/storybook";
 
 import ArticleDetailsPage from "./ArticleDetailsPage";
-import { IArticleDetailsCommentsSchema } from "../model/types/articleDetailsCommentsSchema";
+import { IArticleDetailsCommentsSchema } from "../../model/types/articleDetailsCommentsSchema";
 
 const articleComments: IArticleDetailsCommentsSchema = {
   ids: ["1", "2"],

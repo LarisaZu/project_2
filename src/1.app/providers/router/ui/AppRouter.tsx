@@ -6,6 +6,7 @@ import { MainPage } from "2.pages/MainPage";
 import { NotFoundPage } from "2.pages/NotFoundPage";
 import { ProfilePage } from "2.pages/ProfilePage";
 import { ArticlesPage } from "2.pages/ArticlesPage";
+import { ArticleEditPage } from "2.pages/ArticleEditPage";
 import { ArticleDetailsPage } from "2.pages/ArticleDetailsPage";
 import { PageLoader } from "3.widgets/PageLoader";
 import { AppRoute, routePath } from "6.shared/config/routeConfig/routeConfig";
@@ -35,6 +36,16 @@ export const routeConfig: Record<AppRoute, TAppRouteProps> = {
   [AppRoute.ARTICLE_DETAILS]: {
     path: routePath[AppRoute.ARTICLE_DETAILS] + ":articleId",
     element: <ArticleDetailsPage />,
+    authOnly: true,
+  },
+  [AppRoute.ARTICLE_EDIT]: {
+    path: routePath[AppRoute.ARTICLE_EDIT],
+    element: <ArticleEditPage />,
+    authOnly: true,
+  },
+  [AppRoute.ARTICLE_CREATE]: {
+    path: routePath[AppRoute.ARTICLE_CREATE],
+    element: <ArticleEditPage />,
     authOnly: true,
   },
   // last

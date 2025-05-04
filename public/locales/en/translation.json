@@ -17,5 +17,6 @@
   "Введите логин": "Enter your username",
   "Введите пароль": "Enter the password",
   "Неверный логин или пароль": "Invalid username or password",
-  "Форма авторизации": "Authorization form"
+  "Форма авторизации": "Authorization form",
+  "Создать статью": "Create article"
 }

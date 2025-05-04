@@ -5,10 +5,13 @@ import { useTranslation } from "react-i18next";
 import { LoginModal } from "4.features/AuthByUsername";
 import { getUserAuthState, userActions } from "5.entities/User";
 import { Button } from "6.shared/ui-kit/Button/Button";
-
-import { classNames } from "6.shared/lib";
-import cls from "./Navbar.module.scss";
+import { Text } from "6.shared/ui-kit/Text/Text";
+import { AppLink } from "6.shared/ui-kit/AppLink/AppLink";
 import { USER_LOCALSTORAGE_KEY } from "6.shared/const/localstorage";
+import { classNames } from "6.shared/lib";
+import { AppRoute, routePath } from "6.shared/config/routeConfig/routeConfig";
+
+import cls from "./Navbar.module.scss";
 
 export interface INavbarProps {
   className?: string;
@@ -40,6 +43,17 @@ export const Navbar = memo(function Navbar(props: INavbarProps) {
   if (authData) {
     return (
       <header className={classNames(cls.navbar, [className])}>
+        <Text
+          title="My App"
+          size="size_l"
+          className={cls.logo}
+          variant="inverted"
+        />
+
+        <AppLink to={routePath[AppRoute.ARTICLE_CREATE]}>
+          {t("Создать статью")}
+        </AppLink>
+
         <Button
           className={cls["auth-button"]}
           onClick={handleLogout}

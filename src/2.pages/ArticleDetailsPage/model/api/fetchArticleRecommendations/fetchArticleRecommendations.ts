@@ -17,9 +17,9 @@ export const fetchArticleRecommendations = createAsyncThunk<
       const response = await extra.api.get<IArticle[]>(`/articles`, {
         params: {
           _limit: 4,
+          _expand: "user",
         },
       });
-      console.log("🚀 ~ response:", response);
       if (!response.data) {
         throw Error("Ошибка получения списка рекомендаций");
       }

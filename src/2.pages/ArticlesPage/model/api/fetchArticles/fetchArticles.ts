@@ -42,7 +42,7 @@ export const fetchArticles = createAsyncThunk<
           q: search,
           _sort: sort,
           _order: order,
-          ...(type === EArticleType.ALL ? {} : { type }),
+          ...(type === EArticleType.ALL ? {} : { type_like: type }),
         },
       });
       if (!response.data) {
