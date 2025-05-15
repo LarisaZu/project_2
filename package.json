@@ -8,7 +8,7 @@
     "start:dev:server": "node ./json-server/index.js",
     "start:dev": "concurrently \"npm start\" \"npm run start:dev:server\"",
     "build:prod": "npx webpack --env mode=production apiUrl=https://production2server-znfk42gww-laras-projects-ddd3a49d.vercel.app",
-    "build:dev": "npx webpack --env mode=development",
+    "build:dev": "npx webpack --env mode=development apiUrl=https://production2server-znfk42gww-laras-projects-ddd3a49d.vercel.app",
     "eslint:ts": "eslint \"**/*.{ts,tsx}\"",
     "eslint:ts:fix": "eslint \"**/*.{ts,tsx} --fix\"",
     "eslint:scss": "npx stylelint \"**/*.scss\"",
