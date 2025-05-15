@@ -36,11 +36,14 @@ bower_components
 .lock-wscript
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
+./build/Release
+/build
+/storybook-static
 
 # Dependency directories
 node_modules/
 jspm_packages/
+package-lock.json
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
@@ -121,6 +124,7 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+.DS_Store
 
 # yarn v2
 .yarn/cache
@@ -128,3 +132,4 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+*storybook.log
