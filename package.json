@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx webpack serve --env port=3010",
+    "start": "npx webpack serve --env port=3010 apiUrl=https://production2server-znfk42gww-laras-projects-ddd3a49d.vercel.app",
     "start:dev:server": "node ./json-server/index.js",
     "start:dev": "concurrently \"npm start\" \"npm run start:dev:server\"",
     "build:prod": "npx webpack --env mode=production apiUrl=https://production2server-znfk42gww-laras-projects-ddd3a49d.vercel.app",
