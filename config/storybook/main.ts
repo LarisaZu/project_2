@@ -28,6 +28,8 @@ const config: StorybookConfig = {
       entry: "",
       build: "",
       html: "",
+      buildLocales: "",
+      locales: "",
       src: path.resolve(__dirname, "..", "..", "src"),
     };
 

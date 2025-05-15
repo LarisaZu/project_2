@@ -1,13 +1,3 @@
 import { lazy } from "react";
 
-export const ArticlesPageAsync = lazy(
-  () =>
-    new Promise((resolve) => {
-      setTimeout(
-        () =>
-          // @ts-expect-error: Unreachable code error
-          resolve(import("./ArticlesPage")),
-        300
-      );
-    })
-);
+export const ArticlesPageAsync = lazy(() => import("./ArticlesPage"));

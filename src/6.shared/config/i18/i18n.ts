@@ -26,6 +26,7 @@ i18n
       //     ? "/storybook-static/locales/{{lng}}/{{ns}}.json"
       //     : "/locales/{{lng}}/{{ns}}.json";
       // },
+      loadPath: "/locales/{{lng}}/{{ns}}.json",
       requestOptions: {
         cache: "no-store",
       },

@@ -5,6 +5,7 @@ import { TestAsyncThunk } from "6.shared/lib/tests/testAsyncThunk/testAsyncThunk
 jest.mock("../fetchArticles/fetchArticles");
 
 describe("initArticlesPage", () => {
+  const url = new URL("https://example.com/");
   test("success", async () => {
     const thunk = new TestAsyncThunk(initArticlesPage, {
       articlesPage: {
@@ -17,8 +18,7 @@ describe("initArticlesPage", () => {
         _inited: false,
       },
     });
-
-    await thunk.callThunk({});
+    await thunk.callThunk(url.searchParams);
 
     expect(thunk.dispatch).toBeCalledTimes(4);
     expect(fetchArticles).toHaveBeenCalledWith({ page: 1 });
@@ -37,7 +37,7 @@ describe("initArticlesPage", () => {
       },
     });
 
-    await thunk.callThunk({});
+    await thunk.callThunk(url.searchParams);
 
     expect(thunk.dispatch).toBeCalledTimes(2);
     expect(fetchArticles).not.toHaveBeenCalled();
