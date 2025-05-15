@@ -1,0 +1,24 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--navbar-height);
+  background-color: var(--inverted-bg-color);
+  padding: 0 var(--app-padding);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: auto;
+}
+
+.auth-button {
+  margin-left: auto;
+}
+
+.logo {
+  width: var(--sidebar-width);
+  padding-left: 30px;
+}

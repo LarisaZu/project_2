@@ -1,0 +1,22 @@
+{
+  "Язык": "РУ",
+  "pages": {
+    "Главная": "Main",
+    "О сайте": "About",
+    "Профиль": "Profile",
+    "Статьи": "Articles"
+  },
+  "Страница не найдена": "Page not found",
+  "Что-то пошло не так": "Something went wrong",
+  "Обновить страницу": "Refresh the page",
+  "Вызвать ошибку": "Throw error",
+  "Тогл": "Toggle",
+  "Lorem30": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi repellat aspernatur enim veritatis iste iusto nemo quae, eos",
+  "Войти": "Sign in",
+  "Выйти": "Log out",
+  "Введите логин": "Enter your username",
+  "Введите пароль": "Enter the password",
+  "Неверный логин или пароль": "Invalid username or password",
+  "Форма авторизации": "Authorization form",
+  "Создать статью": "Create article"
+}

@@ -1,0 +1,10 @@
+# npm run build:prod
+# npm run eslint:ts
+# npm run eslint:scss
+# npm run test:unit
+# npm run storybook:build
+# npm run test:ui
+
+
+
+
